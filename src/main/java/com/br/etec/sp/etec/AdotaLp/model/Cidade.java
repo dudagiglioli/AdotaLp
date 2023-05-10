@@ -1,6 +1,8 @@
 package com.br.etec.sp.etec.AdotaLp.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -40,4 +42,35 @@ public class Cidade {
     public int hashCode() {
         return Objects.hash(id);
     }
+
+
+    //--------------------------------------------------------------------------------------------------------------
+
+    @ManyToOne
+    @JoinColumn(name = "idestado")
+    private Estado estado;
+
+    public Estado getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
+    }
+
+    //--------------------------------------------------------------------------------------------------------------
+
+    @OneToMany(mappedBy = "cidade")
+    private List<AdotanteDoador> cidadeaotantedoador = new ArrayList<>();
+
+    public List<AdotanteDoador> getCidadeaotantedoador() {
+        return cidadeaotantedoador;
+    }
+
+    public void setCidadeaotantedoador(List<AdotanteDoador> cidadeaotantedoador) {
+        this.cidadeaotantedoador = cidadeaotantedoador;
+    }
+    
+    //--------------------------------------------------------------------------------------------------------------
 }
+

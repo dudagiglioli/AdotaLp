@@ -128,4 +128,6 @@ public class AdotanteDoador {
     public void setAdotanteadocao(List<AdocaoDoacao> adotanteadocao) {
         this.adotanteadocao = adotanteadocao;
     }
+
+    //--------------------------------------------------------------------------------------------------------------
 }

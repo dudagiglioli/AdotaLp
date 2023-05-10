@@ -1,6 +1,8 @@
 package com.br.etec.sp.etec.AdotaLp.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -67,4 +69,51 @@ public class Animal {
     public int hashCode() {
         return Objects.hash(id);
     }
+
+
+    //--------------------------------------------------------------------------------------------------------------
+
+
+    @ManyToOne
+    @JoinColumn(name = "idraca")
+    private Raca raca;
+
+    public Raca getRaca() {
+        return raca;
+    }
+
+    public void setRaca(Raca raca) {
+        this.raca = raca;
+    }
+
+
+    //--------------------------------------------------------------------------------------------------------------
+
+
+    @OneToMany(mappedBy = "situacaoanimal")
+    private List<SituacaoAnimal> animalsituacao = new ArrayList<>();
+
+    public List<SituacaoAnimal> getAnimalsituacao() {
+        return animalsituacao;
+    }
+
+    public void setAnimalsituacao(List<SituacaoAnimal> animalsituacao) {
+        this.animalsituacao = animalsituacao;
+    }
+
+
+    //--------------------------------------------------------------------------------------------------------------
+
+    @OneToMany(mappedBy = "animal")
+    private List<AdocaoDoacao> doacaoadocao = new ArrayList<>();
+
+    public List<AdocaoDoacao> getDoacaoadocao() {
+        return doacaoadocao;
+    }
+
+    public void setDoacaoadocao(List<AdocaoDoacao> doacaoadocao) {
+        this.doacaoadocao = doacaoadocao;
+    }
+
+    //--------------------------------------------------------------------------------------------------------------
 }

@@ -1,6 +1,8 @@
 package com.br.etec.sp.etec.AdotaLp.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -49,4 +51,10 @@ public class Estado {
     public int hashCode() {
         return Objects.hash(id);
     }
+
+
+    //--------------------------------------------------------------------------------------------------------------
+
+
+
 }
