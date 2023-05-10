@@ -40,4 +40,23 @@ public class SituacaoAnimal {
     public int hashCode() {
         return Objects.hash(id);
     }
+
+
+    //--------------------------------------------------------------------------------------------------------------
+
+    @ManyToOne
+    @JoinColumn(name = "idanimal")
+    private Animal situacaoanimal;
+
+    public Animal getSituacaoanimal() {
+        return situacaoanimal;
+    }
+
+    public void setSituacaoanimal(Animal situacaoanimal) {
+        this.situacaoanimal = situacaoanimal;
+    }
+
+    //--------------------------------------------------------------------------------------------------------------
+
+    
 }
