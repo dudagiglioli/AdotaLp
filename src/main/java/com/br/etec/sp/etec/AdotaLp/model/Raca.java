@@ -1,6 +1,8 @@
 package com.br.etec.sp.etec.AdotaLp.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -40,4 +42,20 @@ public class Raca {
     public int hashCode() {
         return Objects.hash(id);
     }
+
+
+    //--------------------------------------------------------------------------------------------------------------
+
+    @OneToMany(mappedBy = "raca")
+    private List<Animal> racaanimal = new ArrayList<>();
+
+    public List<Animal> getRacaanimal() {
+        return racaanimal;
+    }
+
+    public void setRacaanimal(List<Animal> racaanimal) {
+        this.racaanimal = racaanimal;
+    }
+
+//--------------------------------------------------------------------------------------------------------------
 }
