@@ -55,6 +55,16 @@ public class Estado {
 
     //--------------------------------------------------------------------------------------------------------------
 
+    @OneToMany(mappedBy = "estado")
+    private List<Cidade> cidadeestado = new ArrayList<>();
 
+    public List<Cidade> getCidadeestado() {
+        return cidadeestado;
+    }
 
+    public void setCidadeestado(List<Cidade> cidadeestado) {
+        this.cidadeestado = cidadeestado;
+    }
+
+    //--------------------------------------------------------------------------------------------------------------
 }
