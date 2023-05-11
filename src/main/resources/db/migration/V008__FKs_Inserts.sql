@@ -2,7 +2,7 @@ alter table cidade add constraint FK_estado_cidade foreign key(idestado) referen
 alter table adotantedoador add constraint FK_cidade_adotantedoador foreign key(idcidade) references cidade(id);
 alter table situacaoanimal add constraint FK_animal_situacaoanimal foreign key(idanimal) references animal(id);
 alter table animal add constraint FK_raca_animal foreign key(idraca) references raca(id);
-alter table adocaodoacao add constraint FK_animal_adocaodoacao foreign key(idAnimal) references animal(id);
+alter table adocaodoacao add constraint FK_animal_adocaodoacao foreign key(idanimal) references animal(id);
 alter table adocaodoacao add constraint FK_adotante_adocaodoacao foreign key(idadotante) references adotantedoador(id);
 alter table adocaodoacao add constraint FK_doador_adocaodoacao foreign key(iddoador) references adotantedoador(id);
 

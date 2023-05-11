@@ -1,5 +1,7 @@
 package com.br.etec.sp.etec.AdotaLp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.Objects;
@@ -44,6 +46,7 @@ public class AdocaoDoacao {
 
   //---------------------------------------------------------------------------------------------------------------
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "idanimal")
     private Animal animal;
@@ -58,6 +61,7 @@ public class AdocaoDoacao {
 
     //--------------------------------------------------------------------------------------------------------------
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "iddoador")
     private AdotanteDoador doador;
@@ -72,6 +76,7 @@ public class AdocaoDoacao {
 
     //--------------------------------------------------------------------------------------------------------------
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "idadotante")
     private AdotanteDoador adotante;
