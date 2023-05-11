@@ -19,7 +19,7 @@ values ('Duda Giglioli', '51547682132', '(14)99812-1409', 'dudaguilice@gmail.com
 insert into adotantedoador(nome, cpf, telefone, email, dtnascimento, endereco, idcidade)
 values ('Nickolas Mello', '76547682132', '(14)99821-0915', 'nickolasmello@gmail.com', '2000-02-21', 'Rua das  Margaridas, 17', 2);
 insert into adotantedoador(nome, cpf, telefone, email, dtnascimento, endereco, idcidade)
-values ('Guilherme Martos', '1154203610', '(14)992738-9520', 'guimartos@gmail.com', '2000-03-08', 'Rua do Girassol, 160', 4);
+values ('Guilherme Martos', '1154203610', '(14)99278-9520', 'guimartos@gmail.com', '2000-03-08', 'Rua do Girassol, 160', 4);
 
 insert into raca(descricao) values ('Pinscher');
 insert into raca(descricao) values ('Labrador');
