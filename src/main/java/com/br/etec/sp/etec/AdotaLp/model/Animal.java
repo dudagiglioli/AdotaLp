@@ -1,5 +1,7 @@
 package com.br.etec.sp.etec.AdotaLp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -89,7 +91,7 @@ public class Animal {
 
     //--------------------------------------------------------------------------------------------------------------
 
-
+    @JsonIgnore
     @OneToMany(mappedBy = "situacaoanimal")
     private List<SituacaoAnimal> animalsituacao = new ArrayList<>();
 
@@ -104,6 +106,7 @@ public class Animal {
 
     //--------------------------------------------------------------------------------------------------------------
 
+    @JsonIgnore
     @OneToMany(mappedBy = "animal")
     private List<AdocaoDoacao> doacaoadocao = new ArrayList<>();
 

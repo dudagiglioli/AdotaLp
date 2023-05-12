@@ -46,7 +46,7 @@ public class AdocaoDoacao {
 
   //---------------------------------------------------------------------------------------------------------------
 
-    @JsonIgnore
+
     @ManyToOne
     @JoinColumn(name = "idanimal")
     private Animal animal;
@@ -61,7 +61,6 @@ public class AdocaoDoacao {
 
     //--------------------------------------------------------------------------------------------------------------
 
-    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "iddoador")
     private AdotanteDoador doador;
@@ -76,7 +75,6 @@ public class AdocaoDoacao {
 
     //--------------------------------------------------------------------------------------------------------------
 
-    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "idadotante")
     private AdotanteDoador adotante;

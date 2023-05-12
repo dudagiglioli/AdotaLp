@@ -1,5 +1,7 @@
 package com.br.etec.sp.etec.AdotaLp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
@@ -105,6 +107,7 @@ public class AdotanteDoador {
 
     //--------------------------------------------------------------------------------------------------------------
 
+    @JsonIgnore
     @OneToMany(mappedBy = "doador")
     private List<AdocaoDoacao> doadordoacao = new ArrayList<>();
 
@@ -118,6 +121,7 @@ public class AdotanteDoador {
 
     //--------------------------------------------------------------------------------------------------------------
 
+    @JsonIgnore
     @OneToMany(mappedBy = "adotante")
     private List<AdocaoDoacao> adotanteadocao = new ArrayList<>();
 

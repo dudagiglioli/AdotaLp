@@ -1,5 +1,7 @@
 package com.br.etec.sp.etec.AdotaLp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -55,6 +57,7 @@ public class Estado {
 
     //--------------------------------------------------------------------------------------------------------------
 
+    @JsonIgnore
     @OneToMany(mappedBy = "estado")
     private List<Cidade> cidadeestado = new ArrayList<>();
 

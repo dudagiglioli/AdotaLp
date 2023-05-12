@@ -1,5 +1,7 @@
 package com.br.etec.sp.etec.AdotaLp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -46,6 +48,7 @@ public class Raca {
 
     //--------------------------------------------------------------------------------------------------------------
 
+    @JsonIgnore
     @OneToMany(mappedBy = "raca")
     private List<Animal> racaanimal = new ArrayList<>();
 
