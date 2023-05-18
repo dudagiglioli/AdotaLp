@@ -2,6 +2,7 @@ package com.br.etec.sp.etec.AdotaLp.repository.estado;
 
 import com.br.etec.sp.etec.AdotaLp.model.Estado;
 import com.br.etec.sp.etec.AdotaLp.repository.filter.EstadoFilter;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.util.Predicates;
@@ -37,7 +38,13 @@ public class EstadoRepositoryImpl implements EstadoRepositoryQuery{
 
     private Predicate[] criarrestricoes(EstadoFilter estadofilter, CriteriaBuilder builder, Root<Estado> root) {
 
-        List<Predicates> predicates = new ArrayList<>();
+        List<Predicate> predicates = new ArrayList<>();
+
+        if (StringUtils.isEmpty(estadofilter.getNome())){
+            predicates.add(builder.like(builder.lower(root.get("nome")),
+                    "%" + estadofilter.getNome().toLowerCase()));
+
+        }
 
     }
 
