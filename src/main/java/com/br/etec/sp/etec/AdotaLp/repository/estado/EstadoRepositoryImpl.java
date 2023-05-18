@@ -31,6 +31,7 @@ public class EstadoRepositoryImpl implements EstadoRepositoryQuery{
 
         Predicate[] predicates = criarrestricoes(estadofilter, builder, root);
         criteria.where(predicates);
+        criteria.orderBy(builder.asc(root.get("nome")));
 
         return null;
     }
