@@ -30,7 +30,6 @@ public class EstadoRepositoryImpl implements EstadoRepositoryQuery{
         Root<Estado> root = criteria.from(Estado.class);
 
         Predicate[] predicates = criarrestricoes(estadofilter, builder, root);
-
         criteria.where(predicates);
 
         return null;
@@ -45,6 +44,8 @@ public class EstadoRepositoryImpl implements EstadoRepositoryQuery{
                     "%" + estadofilter.getNome().toLowerCase()));
 
         }
+
+        return predicates.toArray(new Predicate[predicates.size()]);
 
     }
 
