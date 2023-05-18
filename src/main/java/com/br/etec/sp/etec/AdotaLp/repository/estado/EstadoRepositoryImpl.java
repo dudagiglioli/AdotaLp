@@ -9,6 +9,7 @@ import org.springframework.data.util.Predicates;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
@@ -32,6 +33,8 @@ public class EstadoRepositoryImpl implements EstadoRepositoryQuery{
         Predicate[] predicates = criarrestricoes(estadofilter, builder, root);
         criteria.where(predicates);
         criteria.orderBy(builder.asc(root.get("nome")));
+
+        TypedQuery<Estado> query = manager.createQuery(criteria);
 
         return null;
     }
