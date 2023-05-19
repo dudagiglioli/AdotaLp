@@ -56,6 +56,7 @@ public class EstadoRepositoryImpl implements EstadoRepositoryQuery{
         return predicates.toArray(new Predicate[predicates.size()]);
 
     }
+    
 
 
 }
