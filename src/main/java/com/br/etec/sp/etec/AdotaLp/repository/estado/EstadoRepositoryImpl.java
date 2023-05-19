@@ -45,12 +45,12 @@ public class EstadoRepositoryImpl implements EstadoRepositoryQuery{
 
         if (!StringUtils.isEmpty(estadofilter.getNome())){
             predicates.add(builder.like(builder.lower(root.get("nome")),
-                    "%" + estadofilter.getNome().toLowerCase()));
+                    "%" + estadofilter.getNome().toLowerCase() + "%"));
 
         }
         if (!StringUtils.isEmpty(estadofilter.getSigla())){
             predicates.add(builder.like(builder.lower(root.get("sigla")),
-                    "%" + estadofilter.getSigla().toLowerCase()));
+                    "%" + estadofilter.getSigla().toLowerCase() + "%"));
         }
 
         return predicates.toArray(new Predicate[predicates.size()]);
