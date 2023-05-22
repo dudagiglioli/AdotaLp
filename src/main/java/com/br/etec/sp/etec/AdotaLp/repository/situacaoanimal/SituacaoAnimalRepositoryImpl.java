@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
@@ -27,7 +28,13 @@ public class SituacaoAnimalRepositoryImpl implements SituacaoAnimalRepositoryQue
         CriteriaQuery<SituacaoAnimal> criteria = builder.createQuery(SituacaoAnimal.class);
         Root<SituacaoAnimal> root = criteria.from(SituacaoAnimal.class);
 
+        Predicate[] predicates = criarrestricoes(situacaoanimalfilter, builder, root);
+        criteria.where(predicates);
+        criteria.orderBy(builder.asc(root.get("descricao")));
 
+        TypedQuery<SituacaoAnimal> query = manager.createQuery(criteria);
+
+        return null;
     }
 
     private Predicate[] criarrestricoes(SituacaoAnimalFilter situacaoanimalfilter, CriteriaBuilder builder, Root root){
