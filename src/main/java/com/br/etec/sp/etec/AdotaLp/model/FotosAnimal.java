@@ -81,7 +81,7 @@ public class FotosAnimal {
     //--------------------------------------------------------------------------------------------------------------
 
     @ManyToOne
-    @JoinColumn(name = "idanimal")
+    @JoinColumn(name = "iddoanimal")
     private Animal fotosanimal;
 
     public Animal getFotosanimal() { return fotosanimal; }

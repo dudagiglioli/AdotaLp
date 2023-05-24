@@ -1,6 +1,6 @@
 create table fotosanimal(
     id int not null primary key auto_increment,
-    idanimal int not null,
+    iddoanimal int not null,
     foto1 varchar(70),
     foto2 varchar(70),
     foto3 varchar(70),

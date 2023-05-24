@@ -5,12 +5,8 @@ alter table animal add constraint FK_raca_animal foreign key(idraca) references 
 alter table adocaodoacao add constraint FK_animal_adocaodoacao foreign key(idanimal) references animal(id);
 alter table adocaodoacao add constraint FK_adotante_adocaodoacao foreign key(idadotante) references adotantedoador(id);
 alter table adocaodoacao add constraint FK_doador_adocaodoacao foreign key(iddoador) references adotantedoador(id);
-alter table fotosanimal add constraint FK_fotosanimal_animal foreign key(idanimal) references animal(id)
+alter table fotosanimal add constraint FK_fotosanimal_animal foreign key(iddoanimal) references animal(id);
 
-insert into fotosanimal(idanimal, foto1, foto2, foto3, foto4, foto5)
-values ('1', 'fotoexemplo1', 'fotoexemplo2', 'fotoexemplo3', 'fotoexemplo4', 'fotoexemplo5');
-insert into fotosanimal(idanimal, foto1, foto2, foto3, foto4, foto5)
-values ('2', 'exemplo1', 'exemplo2', 'exemplo3', 'exemplo4', 'exemplo5');
 
 
 insert into estado(nome, sigla) values ('São Paulo', 'SP');
