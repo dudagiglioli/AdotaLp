@@ -120,5 +120,11 @@ public class Animal {
 
     //--------------------------------------------------------------------------------------------------------------
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "fotosanimal")
+    private List<FotosAnimal> fotosdoanimal = new ArrayList<>();
 
+    public List<FotosAnimal> getFotosdoanimal() { return fotosdoanimal; }
+
+    public void setFotosdoanimal(List<FotosAnimal> fotosdoanimal) { this.fotosdoanimal = fotosdoanimal; }
 }
