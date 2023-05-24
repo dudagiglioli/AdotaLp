@@ -21,6 +21,7 @@ public class AdotanteDoador {
     private String email;
     private Date dtnascimento;
     private String endereco;
+    private String fotoperfil;
 
     public Integer getId() {
         return id;
@@ -77,6 +78,10 @@ public class AdotanteDoador {
     public void setEndereco(String endereco) {
         this.endereco = endereco;
     }
+
+    public String getFotoperfil() {return fotoperfil;}
+
+    public void setFotoperfil(String fotoperfil) { this.fotoperfil = fotoperfil; }
 
     @Override
     public boolean equals(Object o) {
