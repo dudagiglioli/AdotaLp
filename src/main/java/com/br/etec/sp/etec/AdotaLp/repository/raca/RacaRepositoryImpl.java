@@ -4,6 +4,7 @@ import com.br.etec.sp.etec.AdotaLp.model.Raca;
 import com.br.etec.sp.etec.AdotaLp.repository.filter.RacaFilter;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 
 import javax.persistence.EntityManager;
@@ -31,11 +32,37 @@ public class RacaRepositoryImpl implements RacaRepositoryQuery{
 
         Predicate[] predicates = criarrestricoes(racafilter, builder, root);
         criteria.where(predicates);
-        criteria.orderBy(builder.asc(root.get("nome")));
+        criteria.orderBy(builder.asc(root.get("descricao")));
 
         TypedQuery<Raca> query = manager.createQuery(criteria);
+        adicionarrestricoesdepaginacoes(query, pageable);
 
-        return null;
+        return new PageImpl<>(query.getResultList(), pageable, total(racafilter));
+
+    }
+
+    private Long total(RacaFilter racafilter){
+        CriteriaBuilder builder = manager.getCriteriaBuilder();
+        CriteriaQuery<Long> criteria = builder.createQuery(Long.class);
+        Root<Raca> root = criteria.from(Raca.class);
+
+        Predicate[] predicates = criarrestricoes(racafilter, builder, root);
+        criteria.where(predicates);
+        criteria.orderBy(builder.asc(root.get("descricao")));
+
+        criteria.select(builder.count(root));
+
+        return  manager.createQuery(criteria).getSingleResult();
+    }
+
+    private void adicionarrestricoesdepaginacoes(TypedQuery<Raca> query, Pageable pageable) {
+        int paginaAtual = pageable.getPageNumber();
+        int totalRegistrosPorPagina = pageable.getPageSize();
+        int primeiroRegistroPagina = paginaAtual * totalRegistrosPorPagina;
+
+        query.setFirstResult(primeiroRegistroPagina);
+        query.setMaxResults(totalRegistrosPorPagina);
+
     }
 
     private Predicate[] criarrestricoes(RacaFilter racafilter, CriteriaBuilder builder, Root root){

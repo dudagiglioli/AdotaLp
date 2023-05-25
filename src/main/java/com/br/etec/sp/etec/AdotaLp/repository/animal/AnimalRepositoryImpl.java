@@ -51,8 +51,6 @@ public class AnimalRepositoryImpl implements  AnimalRepositoryQuery{
                     "%" + animalfilter.getSexo().toLowerCase() + "%"));
         }
 
-
-
         return predicates.toArray(new Predicate[predicates.size()]);
     }
 }
