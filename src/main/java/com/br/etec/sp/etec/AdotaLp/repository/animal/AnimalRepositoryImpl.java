@@ -30,7 +30,7 @@ public class AnimalRepositoryImpl implements  AnimalRepositoryQuery{
 
         Predicate[] predicates = criarrestricoes(animalfilter, builder, root);
         criteria.where(predicates);
-        criteria.orderBy(builder.asc(root.get("nome")));
+        criteria.orderBy(builder.asc(root.get("nomeanimal")));
 
         TypedQuery<Animal> query = manager.createQuery(criteria);
 
@@ -41,9 +41,9 @@ public class AnimalRepositoryImpl implements  AnimalRepositoryQuery{
 
         List<Predicate> predicates = new ArrayList<>();
 
-        if (!StringUtils.isEmpty(animalfilter.getNome())){
-            predicates.add(builder.like(builder.lower(root.get("nome")),
-                    "%" + animalfilter.getNome().toLowerCase() + "%"));
+        if (!StringUtils.isEmpty(animalfilter.getNomeanimal())){
+            predicates.add(builder.like(builder.lower(root.get("nomeanimal")),
+                    "%" + animalfilter.getNomeanimal().toLowerCase() + "%"));
         }
 
         if (!StringUtils.isEmpty(animalfilter.getSexo())){
@@ -52,11 +52,6 @@ public class AnimalRepositoryImpl implements  AnimalRepositoryQuery{
         }
 
 
-
-        if (!StringUtils.isEmpty(animalfilter.getRaca())){
-            predicates.add(builder.like(builder.lower(root.get("raca")),
-                    "%" + animalfilter.getRaca().toLowerCase() + "%"));
-        }
 
         return predicates.toArray(new Predicate[predicates.size()]);
     }

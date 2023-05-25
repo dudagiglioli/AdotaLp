@@ -49,4 +49,5 @@ public class RacaRepositoryImpl implements RacaRepositoryQuery{
 
         return predicates.toArray(new Predicate[predicates.size()]);
     }
+
 }

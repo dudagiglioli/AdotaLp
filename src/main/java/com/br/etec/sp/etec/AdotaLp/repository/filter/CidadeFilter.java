@@ -2,23 +2,13 @@ package com.br.etec.sp.etec.AdotaLp.repository.filter;
 
 public class CidadeFilter {
 
-    private String nome;
-    private String sigla;
+    private String nomecidade;
 
-    public String getSigla() {
-        return sigla;
+    public String getNomecidade() {
+        return nomecidade;
     }
 
-    public void setSigla(String sigla) {
-        this.sigla = sigla;
+    public void setNomecidade(String nomecidade) {
+        this.nomecidade = nomecidade;
     }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
 }

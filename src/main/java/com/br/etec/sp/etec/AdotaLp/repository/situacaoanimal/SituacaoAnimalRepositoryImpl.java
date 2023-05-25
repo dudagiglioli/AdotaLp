@@ -41,10 +41,6 @@ public class SituacaoAnimalRepositoryImpl implements SituacaoAnimalRepositoryQue
 
         List<Predicate> predicates = new ArrayList<>();
 
-        if (!StringUtils.isEmpty(situacaoanimalfilter.getNomeanimal())){
-            predicates.add(builder.like(builder.lower(root.get("nomeanimal")),
-                    "%" + situacaoanimalfilter.getNomeanimal().toLowerCase() + "%"));
-        }
         if (!StringUtils.isEmpty(situacaoanimalfilter.getDescricao())){
             predicates.add(builder.like(builder.lower(root.get("descricao")),
                     "%" + situacaoanimalfilter.getDescricao() + "%"));

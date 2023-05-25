@@ -2,18 +2,17 @@ package com.br.etec.sp.etec.AdotaLp.repository.filter;
 
 public class AnimalFilter {
 
-    private String nome;
+    private String nomeanimal;
     private String sexo;
     private Integer idade;
     private Integer porte;
-    private String raca;
 
-    public String getNome() {
-        return nome;
+    public String getNomeanimal() {
+        return nomeanimal;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNomeanimal(String nomeanimal) {
+        this.nomeanimal = nomeanimal;
     }
 
     public String getSexo() {
@@ -40,11 +39,4 @@ public class AnimalFilter {
         this.porte = porte;
     }
 
-    public String getRaca() {
-        return raca;
-    }
-
-    public void setRaca(String raca) {
-        this.raca = raca;
-    }
 }

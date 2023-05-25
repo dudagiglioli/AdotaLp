@@ -11,4 +11,5 @@ public class RacaFilter {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
+
 }

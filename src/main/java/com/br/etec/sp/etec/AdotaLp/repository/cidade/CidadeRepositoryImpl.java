@@ -30,7 +30,7 @@ public class CidadeRepositoryImpl implements  CidadeRepositoryQuery{
 
         Predicate[] predicates = criarrestricoes(cidadefilter, builder, root);
         criteria.where(predicates);
-        criteria.orderBy((builder.asc(root.get("nome"))));
+        criteria.orderBy((builder.asc(root.get("nomecidade"))));
 
         TypedQuery<Cidade> query= manager.createQuery(criteria);
 
@@ -41,14 +41,9 @@ public class CidadeRepositoryImpl implements  CidadeRepositoryQuery{
 
         List<Predicate> predicates = new ArrayList<>();
 
-        if (!StringUtils.isEmpty(cidadefilter.getNome())) {
+        if (!StringUtils.isEmpty(cidadefilter.getNomecidade())) {
             predicates.add(builder.like(builder.lower(root.get("nome")),
-                    "%" + cidadefilter.getNome().toLowerCase() + "%"));
-        }
-
-        if (!StringUtils.isEmpty(cidadefilter.getSigla())) {
-            predicates.add(builder.like(builder.lower(root.get("sigla")),
-                    "%" + cidadefilter.getSigla().toLowerCase() + "%"));
+                    "%" + cidadefilter.getNomecidade().toLowerCase() + "%"));
         }
 
         return predicates.toArray(new Predicate[predicates.size()]);

@@ -7,8 +7,6 @@ public class AdotanteDoadorFilter {
     private String telefone;
     private String email;
     private String endereco;
-    private String nomecidade;
-    private String sigla;
 
     public String getNome() {
         return nome;
@@ -50,19 +48,4 @@ public class AdotanteDoadorFilter {
         this.endereco = endereco;
     }
 
-    public String getNomecidade() {
-        return nomecidade;
-    }
-
-    public void setNomecidade(String nomecidade) {
-        this.nomecidade = nomecidade;
-    }
-
-    public String getSigla() {
-        return sigla;
-    }
-
-    public void setSigla(String sigla) {
-        this.sigla = sigla;
-    }
 }
