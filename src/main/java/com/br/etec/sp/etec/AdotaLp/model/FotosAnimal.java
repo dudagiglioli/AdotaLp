@@ -11,11 +11,11 @@ public class FotosAnimal {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private Integer id;
-    private String foto1;
-    private String foto2;
-    private String foto3;
-    private String foto4;
-    private String foto5;
+    private String fotoa;
+    private String fotob;
+    private String fotoc;
+    private String fotod;
+    private String fotoe;
 
     public Integer getId() {
         return id;
@@ -25,44 +25,44 @@ public class FotosAnimal {
         this.id = id;
     }
 
-    public String getFoto1() {
-        return foto1;
+    public String getFotoa() {
+        return fotoa;
     }
 
-    public void setFoto1(String foto1) {
-        this.foto1 = foto1;
+    public void setFotoa(String fotoa) {
+        this.fotoa = fotoa;
     }
 
-    public String getFoto2() {
-        return foto2;
+    public String getFotob() {
+        return fotob;
     }
 
-    public void setFoto2(String foto2) {
-        this.foto2 = foto2;
+    public void setFotob(String fotob) {
+        this.fotob = fotob;
     }
 
-    public String getFoto3() {
-        return foto3;
+    public String getFotoc() {
+        return fotoc;
     }
 
-    public void setFoto3(String foto3) {
-        this.foto3 = foto3;
+    public void setFotoc(String fotoc) {
+        this.fotoc = fotoc;
     }
 
-    public String getFoto4() {
-        return foto4;
+    public String getFotod() {
+        return fotod;
     }
 
-    public void setFoto4(String foto4) {
-        this.foto4 = foto4;
+    public void setFotod(String fotod) {
+        this.fotod = fotod;
     }
 
-    public String getFoto5() {
-        return foto5;
+    public String getFotoe() {
+        return fotoe;
     }
 
-    public void setFoto5(String foto5) {
-        this.foto5 = foto5;
+    public void setFotoe(String fotoe) {
+        this.fotoe = fotoe;
     }
 
     @Override
@@ -81,7 +81,7 @@ public class FotosAnimal {
     //--------------------------------------------------------------------------------------------------------------
 
     @ManyToOne
-    @JoinColumn(name = "iddoanimal")
+    @JoinColumn(name = "idanimal")
     private Animal fotosanimal;
 
     public Animal getFotosanimal() { return fotosanimal; }

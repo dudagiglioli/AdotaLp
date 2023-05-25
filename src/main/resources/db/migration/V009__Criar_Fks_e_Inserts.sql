@@ -5,9 +5,7 @@ alter table animal add constraint FK_raca_animal foreign key(idraca) references 
 alter table adocaodoacao add constraint FK_animal_adocaodoacao foreign key(idanimal) references animal(id);
 alter table adocaodoacao add constraint FK_adotante_adocaodoacao foreign key(idadotante) references adotantedoador(id);
 alter table adocaodoacao add constraint FK_doador_adocaodoacao foreign key(iddoador) references adotantedoador(id);
-alter table fotosanimal add constraint FK_fotosanimal_animal foreign key(iddoanimal) references animal(id);
-
-
+alter table fotosanimal add constraint FK_animal_fotosanimal foreign key(idanimal) references animal(id);
 
 insert into estado(nome, sigla) values ('São Paulo', 'SP');
 insert into estado(nome, sigla) values ('Rio de Janeiro', 'RJ');
@@ -39,6 +37,7 @@ insert into adocaodoacao(iddoador, idadotante, idanimal, data) values (1, 2, 1, 
 insert into adocaodoacao(iddoador, idadotante, idanimal, data) values (2, 3, 2, '2023-03-06');
 insert into adocaodoacao(iddoador, idadotante, idanimal, data) values (3, 1, 3, '2022-11-05');
 
-
+insert into fotosanimal(fotoa, fotob, fotoc, fotod, fotoe, idanimal)
+values('adjh', 'fdskjgh', 'dfjhb', 'dfskaljh', 'dkfsjgb', 2);
 
 
