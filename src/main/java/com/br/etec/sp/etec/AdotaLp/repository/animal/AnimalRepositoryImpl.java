@@ -37,6 +37,21 @@ public class AnimalRepositoryImpl implements  AnimalRepositoryQuery{
         return null;
     }
 
+    private Long total(AnimalFilter animalfilter){
+
+        CriteriaBuilder builder = manager.getCriteriaBuilder();
+        CriteriaQuery<Long> criteria = builder.createQuery(Long.class);
+        Root<Animal> root = criteria.from(Animal.class);
+
+        Predicate[] predicates = criarrestricoes(animalfilter, builder, root);
+        criteria.where(predicates);
+        criteria.orderBy(builder.asc(root.get("nomeanimal")));
+
+        criteria.select(builder.count(root));
+
+
+    } //construção
+
     private Predicate[] criarrestricoes(AnimalFilter animalfilter, CriteriaBuilder builder, Root<Animal> root){
 
         List<Predicate> predicates = new ArrayList<>();
@@ -49,6 +64,14 @@ public class AnimalRepositoryImpl implements  AnimalRepositoryQuery{
         if (!StringUtils.isEmpty(animalfilter.getSexo())){
             predicates.add(builder.like(builder.lower(root.get("sexo")),
                     "%" + animalfilter.getSexo().toLowerCase() + "%"));
+        }
+
+        if(root.get("idade") != null){
+            predicates.add(builder.equal(root.get("idade"), animalfilter.getIdade()));
+        }
+
+        if(root.get("porte") != null){
+            predicates.add(builder.equal(root.get("porte"), animalfilter.getPorte()));
         }
 
         return predicates.toArray(new Predicate[predicates.size()]);
