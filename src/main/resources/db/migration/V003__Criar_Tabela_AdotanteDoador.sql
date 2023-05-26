@@ -6,5 +6,6 @@ create table adotantedoador(
     telefone varchar(20),
     email varchar(50),
     dtnascimento date,
-    endereco varchar(30)
+    endereco varchar(30),
+    fotoperfil varchar(70)
 );
