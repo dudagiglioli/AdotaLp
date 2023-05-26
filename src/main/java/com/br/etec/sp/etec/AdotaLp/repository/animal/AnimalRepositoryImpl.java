@@ -4,6 +4,7 @@ import com.br.etec.sp.etec.AdotaLp.model.Animal;
 import com.br.etec.sp.etec.AdotaLp.repository.filter.AnimalFilter;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 
 import javax.persistence.EntityManager;
@@ -30,11 +31,11 @@ public class AnimalRepositoryImpl implements  AnimalRepositoryQuery{
 
         Predicate[] predicates = criarrestricoes(animalfilter, builder, root);
         criteria.where(predicates);
-        criteria.orderBy(builder.asc(root.get("nomeanimal")));
+        criteria.orderBy(builder.asc(root.get("nome")));
 
         TypedQuery<Animal> query = manager.createQuery(criteria);
 
-        return null;
+        return new PageImpl<>(query.getResultList(), pageable, total(animalfilter));
     }
 
     private Long total(AnimalFilter animalfilter){
@@ -45,20 +46,30 @@ public class AnimalRepositoryImpl implements  AnimalRepositoryQuery{
 
         Predicate[] predicates = criarrestricoes(animalfilter, builder, root);
         criteria.where(predicates);
-        criteria.orderBy(builder.asc(root.get("nomeanimal")));
+        criteria.orderBy(builder.asc(root.get("nome")));
 
         criteria.select(builder.count(root));
 
 
-    } //construção
+        return manager.createQuery(criteria).getSingleResult();
+    }
+
+    private void adicionasrestricoesdepaginacao(TypedQuery<Animal> query, Pageable pageable){
+        int paginaatual = pageable.getPageNumber();
+        int totalregistrospagina = pageable.getPageSize();
+        int primeiroregistropagina = paginaatual * totalregistrospagina;
+
+        query.setFirstResult(primeiroregistropagina);
+        query.setMaxResults(totalregistrospagina);
+    }
 
     private Predicate[] criarrestricoes(AnimalFilter animalfilter, CriteriaBuilder builder, Root<Animal> root){
 
         List<Predicate> predicates = new ArrayList<>();
 
-        if (!StringUtils.isEmpty(animalfilter.getNomeanimal())){
-            predicates.add(builder.like(builder.lower(root.get("nomeanimal")),
-                    "%" + animalfilter.getNomeanimal().toLowerCase() + "%"));
+        if (!StringUtils.isEmpty(animalfilter.getNome())){
+            predicates.add(builder.like(builder.lower(root.get("nome")),
+                    "%" + animalfilter.getNome().toLowerCase() + "%"));
         }
 
         if (!StringUtils.isEmpty(animalfilter.getSexo())){
