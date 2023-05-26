@@ -1,9 +1,11 @@
 package com.br.etec.sp.etec.AdotaLp.repository.situacaoanimal;
 
+import com.br.etec.sp.etec.AdotaLp.model.Raca;
 import com.br.etec.sp.etec.AdotaLp.model.SituacaoAnimal;
 import com.br.etec.sp.etec.AdotaLp.repository.filter.SituacaoAnimalFilter;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 
 import javax.persistence.EntityManager;
@@ -34,7 +36,30 @@ public class SituacaoAnimalRepositoryImpl implements SituacaoAnimalRepositoryQue
 
         TypedQuery<SituacaoAnimal> query = manager.createQuery(criteria);
 
-        return null;
+        return new PageImpl<>(query.getResultList(), pageable, total(situacaoanimalfilter));
+    }
+
+    private Long total(SituacaoAnimalFilter situacaoanimalfilter){
+        CriteriaBuilder builder = manager.getCriteriaBuilder();
+        CriteriaQuery<Long> criteria = builder.createQuery(Long.class);
+        Root<SituacaoAnimal> root = criteria.from(SituacaoAnimal.class);
+
+        Predicate[] predicates = criarrestricoes(situacaoanimalfilter, builder, root);
+        criteria.where(predicates);
+        criteria.orderBy(builder.asc(root.get("descricao")));
+
+        criteria.select(builder.count(root));
+
+        return  manager.createQuery(criteria).getSingleResult();
+    }
+
+    private void addrestricoesdepaginacao(TypedQuery<SituacaoAnimal> query, Pageable pageable){
+        int paginaatual = pageable.getPageNumber();
+        int totalresgistros = pageable.getPageSize();
+        int primeiroregistrodepagina = paginaatual * totalresgistros;
+
+        query.setFirstResult(primeiroregistrodepagina);
+        query.setMaxResults(totalresgistros);
     }
 
     private Predicate[] criarrestricoes(SituacaoAnimalFilter situacaoanimalfilter, CriteriaBuilder builder, Root root){
