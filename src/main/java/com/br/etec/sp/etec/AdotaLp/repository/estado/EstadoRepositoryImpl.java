@@ -4,6 +4,7 @@ import com.br.etec.sp.etec.AdotaLp.model.Estado;
 import com.br.etec.sp.etec.AdotaLp.repository.filter.EstadoFilter;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.util.Predicates;
 
@@ -32,20 +33,46 @@ public class EstadoRepositoryImpl implements EstadoRepositoryQuery{
 
         Predicate[] predicates = criarrestricoes(estadofilter, builder, root);
         criteria.where(predicates);
-        criteria.orderBy(builder.asc(root.get("nomeestado")));
+        criteria.orderBy(builder.asc(root.get("nome")));
 
         TypedQuery<Estado> query = manager.createQuery(criteria);
+        addrestricoespaginacao(query, pageable);
 
-        return null;
+        return new PageImpl<>(query.getResultList(), pageable, total(estadofilter));
+    }
+
+    private  Long total(EstadoFilter estadofilter){
+
+        CriteriaBuilder builder = manager.getCriteriaBuilder();
+        CriteriaQuery<Long> criteria = builder.createQuery(Long.class);
+        Root<Estado> root = criteria.from(Estado.class);
+
+        Predicate[] predicates = criarrestricoes(estadofilter, builder, root);
+        criteria.where(predicates);
+        criteria.orderBy(builder.asc(root.get("nome")));
+
+        criteria.select(builder.count(root));
+
+        return manager.createQuery(criteria).getSingleResult();
+
+    }
+
+    private void addrestricoespaginacao(TypedQuery<Estado> query, Pageable pageable){
+        int paginaatual = pageable.getPageNumber();
+        int totaldresgistrospagina = pageable.getPageSize();
+        int primeiroresgistropagina = paginaatual * totaldresgistrospagina;
+
+        query.setFirstResult(primeiroresgistropagina);
+        query.setMaxResults(totaldresgistrospagina);
     }
 
     private Predicate[] criarrestricoes(EstadoFilter estadofilter, CriteriaBuilder builder, Root<Estado> root) {
 
         List<Predicate> predicates = new ArrayList<>();
 
-        if (!StringUtils.isEmpty(estadofilter.getNomeestado())){
-            predicates.add(builder.like(builder.lower(root.get("nomeestado")),
-                    "%" + estadofilter.getNomeestado().toLowerCase() + "%"));
+        if (!StringUtils.isEmpty(estadofilter.getNome())){
+            predicates.add(builder.like(builder.lower(root.get("nome")),
+                    "%" + estadofilter.getNome().toLowerCase() + "%"));
 
         }
         if (!StringUtils.isEmpty(estadofilter.getSigla())){
