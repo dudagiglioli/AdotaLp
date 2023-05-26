@@ -2,14 +2,13 @@ package com.br.etec.sp.etec.AdotaLp.repository.filter;
 
 public class SituacaoAnimalFilter {
 
-    private String descricao;
+    private String situacao;
 
-    public String getDescricao() {
-        return descricao;
+    public String getSituacao() {
+        return situacao;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setSituacao(String situacao) {
+        this.situacao = situacao;
     }
-
 }

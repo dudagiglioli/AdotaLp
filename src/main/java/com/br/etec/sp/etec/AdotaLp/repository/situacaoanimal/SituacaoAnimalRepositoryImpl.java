@@ -32,7 +32,7 @@ public class SituacaoAnimalRepositoryImpl implements SituacaoAnimalRepositoryQue
 
         Predicate[] predicates = criarrestricoes(situacaoanimalfilter, builder, root);
         criteria.where(predicates);
-        criteria.orderBy(builder.asc(root.get("descricao")));
+        criteria.orderBy(builder.asc(root.get("situacao")));
 
         TypedQuery<SituacaoAnimal> query = manager.createQuery(criteria);
 
@@ -46,7 +46,7 @@ public class SituacaoAnimalRepositoryImpl implements SituacaoAnimalRepositoryQue
 
         Predicate[] predicates = criarrestricoes(situacaoanimalfilter, builder, root);
         criteria.where(predicates);
-        criteria.orderBy(builder.asc(root.get("descricao")));
+        criteria.orderBy(builder.asc(root.get("situacao")));
 
         criteria.select(builder.count(root));
 
@@ -66,9 +66,9 @@ public class SituacaoAnimalRepositoryImpl implements SituacaoAnimalRepositoryQue
 
         List<Predicate> predicates = new ArrayList<>();
 
-        if (!StringUtils.isEmpty(situacaoanimalfilter.getDescricao())){
+        if (!StringUtils.isEmpty(situacaoanimalfilter.getSituacao())){
             predicates.add(builder.like(builder.lower(root.get("descricao")),
-                    "%" + situacaoanimalfilter.getDescricao() + "%"));
+                    "%" + situacaoanimalfilter.getSituacao() + "%"));
         }
 
         return predicates.toArray(new Predicate[predicates.size()]);
