@@ -14,8 +14,10 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import java.util.ArrayList;
+import java.util.List;
 
-public class AdocaoDoacaoRepositoryImpl {
+public class AdocaoDoacaoRepositoryImpl implements AdocaoDoacaoRepositoryQuery{
 
     @PersistenceContext
     private EntityManager manager;
@@ -56,5 +58,17 @@ public class AdocaoDoacaoRepositoryImpl {
 
         query.setFirstResult(primeiroregistrodepagina);
         query.setMaxResults(totalresgistros);
+    }
+
+    private Predicate[] criarrestricoes(AdocaoDoacaoFilter adocaodoacaofilter, CriteriaBuilder builder, Root root){
+
+        List<Predicate> predicates = new ArrayList<>();
+
+
+        if (root.get("data")!= null){
+            predicates.add(builder.equal(root.get("data"), adocaodoacaofilter.getData()));
+        }
+
+        return predicates.toArray(new Predicate[predicates.size()]);
     }
 }
