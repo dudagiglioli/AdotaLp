@@ -1,6 +1,7 @@
 package com.br.etec.sp.etec.AdotaLp.repository.adocaodoacao;
 
 import com.br.etec.sp.etec.AdotaLp.model.AdocaoDoacao;
+import com.br.etec.sp.etec.AdotaLp.model.AdotanteDoador;
 import com.br.etec.sp.etec.AdotaLp.repository.filter.AdocaoDoacaoFilter;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -32,5 +33,19 @@ public class AdocaoDoacaoRepositoryImpl {
         TypedQuery<AdocaoDoacao> query = manager.createQuery(criteria);
 
         return  new PageImpl<>(query.getResultList(), pageable, total(adocaodoacaofilter));
+    }
+
+    private Long total(AdocaoDoacaoFilter adocaodoacaofilter) {
+        CriteriaBuilder builder = manager.getCriteriaBuilder();
+        CriteriaQuery<Long> criteria = builder.createQuery(Long.class);
+        Root<AdotanteDoador> root = criteria.from(AdotanteDoador.class);
+
+        Predicate[] predicates = criarrestricoes(adocaodoacaofilter, builder, root);
+        criteria.where(predicates);
+        criteria.orderBy(builder.asc(root.get("data")));
+
+        criteria.select(builder.count(root));
+
+        return  manager.createQuery(criteria).getSingleResult();
     }
 }
