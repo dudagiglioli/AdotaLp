@@ -48,4 +48,13 @@ public class AdocaoDoacaoRepositoryImpl {
 
         return  manager.createQuery(criteria).getSingleResult();
     }
+
+    private void addrestricoesdepaginacao(TypedQuery<AdocaoDoacao> query, Pageable pageable){
+        int paginaatual = pageable.getPageNumber();
+        int totalresgistros = pageable.getPageSize();
+        int primeiroregistrodepagina = paginaatual * totalresgistros;
+
+        query.setFirstResult(primeiroregistrodepagina);
+        query.setMaxResults(totalresgistros);
+    }
 }
