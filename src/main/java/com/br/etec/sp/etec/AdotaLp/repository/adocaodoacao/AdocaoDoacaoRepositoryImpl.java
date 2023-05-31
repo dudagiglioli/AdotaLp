@@ -70,4 +70,5 @@ public class AdocaoDoacaoRepositoryImpl implements AdocaoDoacaoRepositoryQuery{
 
         return predicates.toArray(new Predicate[predicates.size()]);
     }
+    
 }
