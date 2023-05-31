@@ -13,5 +13,5 @@ public class AdocaoDoacaoFilter {
     public void setData(LocalDate data) {
         this.data = data;
     }
-    
+
 }
