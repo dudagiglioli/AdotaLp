@@ -87,5 +87,4 @@ public class AdocaoDoacao {
     public void setAdotante(AdotanteDoador adotante) {
         this.adotante = adotante;
     }
-
 }
