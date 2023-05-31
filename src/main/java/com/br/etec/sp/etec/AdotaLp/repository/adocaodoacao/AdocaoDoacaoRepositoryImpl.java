@@ -42,7 +42,7 @@ public class AdocaoDoacaoRepositoryImpl implements AdocaoDoacaoRepositoryQuery{
         Root<AdocaoDoacao> root = criteria.from(AdocaoDoacao.class);
 
         Predicate[] predicates = criarrestricoes(adocaodoacaofilter, builder, root);
-        criteria.where(predicates);
+        // criteria.where(predicates);
         criteria.orderBy(builder.desc(root.get("data")));
 
         criteria.select(builder.count(root));
@@ -70,5 +70,5 @@ public class AdocaoDoacaoRepositoryImpl implements AdocaoDoacaoRepositoryQuery{
 
         return predicates.toArray(new Predicate[predicates.size()]);
     }
-    
+
 }
