@@ -3,6 +3,7 @@ package com.br.etec.sp.etec.AdotaLp.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 
@@ -13,7 +14,7 @@ public class AdocaoDoacao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private Date data;
+    private LocalDate data;
 
     public Integer getId() {
         return id;
@@ -23,11 +24,11 @@ public class AdocaoDoacao {
         this.id = id;
     }
 
-    public Date getData() {
+    public LocalDate getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(LocalDate data) {
         this.data = data;
     }
 
