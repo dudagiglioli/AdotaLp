@@ -127,4 +127,5 @@ public class Animal {
     public List<FotosAnimal> getFotosdoanimal() { return fotosdoanimal; }
 
     public void setFotosdoanimal(List<FotosAnimal> fotosdoanimal) { this.fotosdoanimal = fotosdoanimal; }
+
 }

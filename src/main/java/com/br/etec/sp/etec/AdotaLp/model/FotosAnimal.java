@@ -87,4 +87,5 @@ public class FotosAnimal {
     public Animal getFotosanimal() { return fotosanimal; }
 
     public void setFotosanimal(Animal fotosanimal) { this.fotosanimal = fotosanimal; }
+
 }
