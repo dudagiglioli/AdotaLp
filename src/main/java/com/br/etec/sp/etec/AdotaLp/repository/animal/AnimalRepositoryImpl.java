@@ -77,13 +77,15 @@ public class AnimalRepositoryImpl implements  AnimalRepositoryQuery{
                     "%" + animalfilter.getSexo().toLowerCase() + "%"));
         }
 
-        if(root.get("idade") != null){
-            predicates.add(builder.equal(root.get("idade"), animalfilter.getIdade()));
-        }
 
-        if(root.get("porte") != null){
-            predicates.add(builder.equal(root.get("porte"), animalfilter.getPorte()));
-        }
+        // Error - Quando tiramos esses dois, o código funciona normalmente;
+      if(root.get("idade") != null){
+        predicates.add(builder.equal(root.get("idade"), animalfilter.getIdade()));
+      }
+
+      if(root.get("porte") != null){
+        predicates.add(builder.equal(root.get("porte"), animalfilter.getPorte()));
+      }
 
         return predicates.toArray(new Predicate[predicates.size()]);
     }
