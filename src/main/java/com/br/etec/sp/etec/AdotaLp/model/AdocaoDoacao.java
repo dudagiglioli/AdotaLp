@@ -9,7 +9,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "adocaodoacao")
-public class AdocaoDoacao { 
+public class AdocaoDoacao {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -87,4 +87,5 @@ public class AdocaoDoacao {
     public void setAdotante(AdotanteDoador adotante) {
         this.adotante = adotante;
     }
+
 }

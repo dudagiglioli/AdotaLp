@@ -73,7 +73,7 @@ public class Cidade {
     public void setCidadeaotantedoador(List<AdotanteDoador> cidadeaotantedoador) {
         this.cidadeaotantedoador = cidadeaotantedoador;
     }
-    
+
     //--------------------------------------------------------------------------------------------------------------
 
 }

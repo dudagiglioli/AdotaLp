@@ -129,3 +129,4 @@ public class Animal {
     public void setFotosdoanimal(List<FotosAnimal> fotosdoanimal) { this.fotosdoanimal = fotosdoanimal; }
 
 }
+
