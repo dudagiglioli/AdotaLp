@@ -63,7 +63,8 @@ public class AdocaoDoacaoRepositoryImpl implements AdocaoDoacaoRepositoryQuery{
 
         List<Predicate> predicates = new ArrayList<>();
 
-
+        // Mesmo erro da tabela de Animal
+      
         if (root.get("data")!= null){
             predicates.add(builder.greaterThanOrEqualTo(root.get("data"), adocaodoacaofilter.getData()));
         }
