@@ -21,7 +21,7 @@ public class AdocaoDoacaoResource {
 
     @GetMapping()
     public Page<AdocaoDoacao> pesquisar(AdocaoDoacaoFilter adocaodoacaofilter, Pageable pageable){
-        return adocaodoacaorepository.Filtrar(adocaodoacaofilter, pageable);
+        return adocaodoacaorepository.filtrar(adocaodoacaofilter, pageable);
     }
 
     @GetMapping("/todos")

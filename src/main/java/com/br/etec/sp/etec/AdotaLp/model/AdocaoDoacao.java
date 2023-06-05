@@ -3,8 +3,8 @@ package com.br.etec.sp.etec.AdotaLp.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.Objects;
 
 @Entity

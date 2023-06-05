@@ -79,7 +79,7 @@ public class AnimalRepositoryImpl implements  AnimalRepositoryQuery{
 
 
         // Error - Quando tiramos esses dois, o código funciona normalmente;
-      if(root.get("idade") != null){
+      if(animalfilter.getIdade() != null){
         predicates.add(builder.equal(root.get("idade"), animalfilter.getIdade()));
       }
 

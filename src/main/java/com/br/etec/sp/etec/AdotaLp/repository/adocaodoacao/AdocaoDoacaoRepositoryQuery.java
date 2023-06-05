@@ -7,5 +7,5 @@ import org.springframework.data.domain.Pageable;
 
 public interface AdocaoDoacaoRepositoryQuery {
 
-    public Page<AdocaoDoacao> Filtrar(AdocaoDoacaoFilter adocaodoacaofilter, Pageable pageable);
+    public Page<AdocaoDoacao> filtrar(AdocaoDoacaoFilter adocaodoacaofilter, Pageable pageable);
 }

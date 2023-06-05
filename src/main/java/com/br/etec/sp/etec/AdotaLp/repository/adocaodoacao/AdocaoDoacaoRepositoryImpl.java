@@ -22,7 +22,7 @@ public class AdocaoDoacaoRepositoryImpl implements AdocaoDoacaoRepositoryQuery{
     private EntityManager manager;
 
     @Override
-    public Page<AdocaoDoacao> Filtrar(AdocaoDoacaoFilter adocaodoacaofilter, Pageable pageable) {
+    public Page<AdocaoDoacao> filtrar(AdocaoDoacaoFilter adocaodoacaofilter, Pageable pageable) {
         CriteriaBuilder builder = manager.getCriteriaBuilder();
         CriteriaQuery<AdocaoDoacao> criteria = builder.createQuery(AdocaoDoacao.class);
         Root<AdocaoDoacao> root = criteria.from(AdocaoDoacao.class);
@@ -42,7 +42,7 @@ public class AdocaoDoacaoRepositoryImpl implements AdocaoDoacaoRepositoryQuery{
         Root<AdocaoDoacao> root = criteria.from(AdocaoDoacao.class);
 
         Predicate[] predicates = criarrestricoes(adocaodoacaofilter, builder, root);
-        // criteria.where(predicates);
+        criteria.where(predicates);
         criteria.orderBy(builder.desc(root.get("data")));
 
         criteria.select(builder.count(root));
@@ -65,7 +65,7 @@ public class AdocaoDoacaoRepositoryImpl implements AdocaoDoacaoRepositoryQuery{
 
         // Mesmo erro da tabela de Animal
       
-        if (root.get("data")!= null){
+        if (adocaodoacaofilter.getData() != null){
             predicates.add(builder.greaterThanOrEqualTo(root.get("data"), adocaodoacaofilter.getData()));
         }
 
