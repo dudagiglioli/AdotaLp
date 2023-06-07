@@ -66,7 +66,7 @@ public class AdocaoDoacaoRepositoryImpl implements AdocaoDoacaoRepositoryQuery{
         // Mesmo erro da tabela de Animal
       
         if (adocaodoacaofilter.getDataadocao() != null){
-            predicates.add(builder.greaterThanOrEqualTo(root.get("data"), adocaodoacaofilter.getDataadocao()));
+            predicates.add(builder.greaterThanOrEqualTo(root.get("dataadocao"), adocaodoacaofilter.getDataadocao()));
         }
 
         return predicates.toArray(new Predicate[predicates.size()]);
