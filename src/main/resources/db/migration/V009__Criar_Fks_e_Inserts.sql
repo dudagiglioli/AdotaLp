@@ -39,5 +39,3 @@ insert into adocaodoacao(iddoador, idadotante, idanimal, dataadocao) values (3, 
 
 insert into fotosanimal(fotoa, fotob, fotoc, fotod, fotoe, idanimal)
 values('adjh', 'fdskjgh', 'dfjhb', 'dfskaljh', 'dkfsjgb', 2);
- 
-
