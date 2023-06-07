@@ -29,4 +29,5 @@ public class AdocaoDoacaoResource {
 
         return adocaodoacaorepository.findAll();
     }
+    
 }
