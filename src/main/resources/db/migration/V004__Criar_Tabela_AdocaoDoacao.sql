@@ -3,5 +3,5 @@ create table adocaodoacao(
     iddoador int not null,
     idadotante int not null,
     idanimal int not null,
-    data date
+    dataadocao date
 );

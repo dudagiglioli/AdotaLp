@@ -33,9 +33,9 @@ insert into situacaoanimal(situacao, idanimal) values ('Bom Estado', 1);
 insert into situacaoanimal(situacao, idanimal) values ('Vacinas ok, bom estado', 2);
 insert into situacaoanimal(situacao, idanimal) values ('Bom Estado', 3);
 
-insert into adocaodoacao(iddoador, idadotante, idanimal, data) values (1, 2, 1, '2023-02-10');
-insert into adocaodoacao(iddoador, idadotante, idanimal, data) values (2, 3, 2, '2023-03-06');
-insert into adocaodoacao(iddoador, idadotante, idanimal, data) values (3, 1, 3, '2022-11-05');
+insert into adocaodoacao(iddoador, idadotante, idanimal, dataadocao) values (1, 2, 1, '2023-02-10');
+insert into adocaodoacao(iddoador, idadotante, idanimal, dataadocao) values (2, 3, 2, '2023-03-06');
+insert into adocaodoacao(iddoador, idadotante, idanimal, dataadocao) values (3, 1, 3, '2022-11-05');
 
 insert into fotosanimal(fotoa, fotob, fotoc, fotod, fotoe, idanimal)
 values('adjh', 'fdskjgh', 'dfjhb', 'dfskaljh', 'dkfsjgb', 2);

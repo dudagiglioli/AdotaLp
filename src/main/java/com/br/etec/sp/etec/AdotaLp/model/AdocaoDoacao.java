@@ -14,7 +14,7 @@ public class AdocaoDoacao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private LocalDate data;
+    private LocalDate dataadocao;
 
     public Integer getId() {
         return id;
@@ -24,12 +24,12 @@ public class AdocaoDoacao {
         this.id = id;
     }
 
-    public LocalDate getData() {
-        return data;
+    public LocalDate getDataadocao() {
+        return dataadocao;
     }
 
-    public void setData(LocalDate data) {
-        this.data = data;
+    public void setDataadocao(LocalDate dataadocao) {
+        this.dataadocao = dataadocao;
     }
 
     @Override

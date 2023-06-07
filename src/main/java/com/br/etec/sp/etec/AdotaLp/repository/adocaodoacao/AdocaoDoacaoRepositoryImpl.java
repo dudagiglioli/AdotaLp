@@ -29,7 +29,7 @@ public class AdocaoDoacaoRepositoryImpl implements AdocaoDoacaoRepositoryQuery{
 
         Predicate[] predicates = criarrestricoes(adocaodoacaofilter, builder, root);
         criteria.where(predicates);
-        criteria.orderBy(builder.desc(root.get("data")));
+        criteria.orderBy(builder.desc(root.get("dataadocao")));
 
         TypedQuery<AdocaoDoacao> query = manager.createQuery(criteria);
 
@@ -43,7 +43,7 @@ public class AdocaoDoacaoRepositoryImpl implements AdocaoDoacaoRepositoryQuery{
 
         Predicate[] predicates = criarrestricoes(adocaodoacaofilter, builder, root);
         criteria.where(predicates);
-        criteria.orderBy(builder.desc(root.get("data")));
+        criteria.orderBy(builder.desc(root.get("dataadocao")));
 
         criteria.select(builder.count(root));
 
@@ -65,8 +65,8 @@ public class AdocaoDoacaoRepositoryImpl implements AdocaoDoacaoRepositoryQuery{
 
         // Mesmo erro da tabela de Animal
       
-        if (adocaodoacaofilter.getData() != null){
-            predicates.add(builder.greaterThanOrEqualTo(root.get("data"), adocaodoacaofilter.getData()));
+        if (adocaodoacaofilter.getDataadocao() != null){
+            predicates.add(builder.greaterThanOrEqualTo(root.get("data"), adocaodoacaofilter.getDataadocao()));
         }
 
         return predicates.toArray(new Predicate[predicates.size()]);

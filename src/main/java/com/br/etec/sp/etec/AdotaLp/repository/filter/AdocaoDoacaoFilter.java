@@ -4,14 +4,16 @@ import java.time.LocalDate;
 
 public class AdocaoDoacaoFilter {
 
-    private LocalDate data;
 
-    public LocalDate getData() {
-        return data;
+    private LocalDate dataadocao;
+
+    public LocalDate getDataadocao() {
+        return dataadocao;
     }
 
-    public void setData(LocalDate data) {
-        this.data = data;
+    public void setDataadocao(LocalDate dataadocao) {
+        this.dataadocao = dataadocao;
     }
+
 
 }
