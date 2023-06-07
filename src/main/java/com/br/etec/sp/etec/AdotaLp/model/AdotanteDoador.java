@@ -3,6 +3,7 @@ package com.br.etec.sp.etec.AdotaLp.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -19,7 +20,7 @@ public class AdotanteDoador {
     private String cpf;
     private String telefone;
     private String email;
-    private Date dtnascimento;
+    private LocalDate dtnascimento;
     private String endereco;
     private String fotoperfil;
 
@@ -63,11 +64,11 @@ public class AdotanteDoador {
         this.email = email;
     }
 
-    public Date getDtnascimento() {
+    public LocalDate getDtnascimento() {
         return dtnascimento;
     }
 
-    public void setDtnascimento(Date dtnascimento) {
+    public void setDtnascimento(LocalDate dtnascimento) {
         this.dtnascimento = dtnascimento;
     }
 

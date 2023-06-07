@@ -1,5 +1,9 @@
 package com.br.etec.sp.etec.AdotaLp.repository.filter;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.time.LocalDate;
+
 public class AdotanteDoadorFilter {
 
     private String nome;
@@ -7,6 +11,9 @@ public class AdotanteDoadorFilter {
     private String telefone;
     private String email;
     private String endereco;
+
+    @DateTimeFormat(pattern = "yyyy/MM/dd")
+    private LocalDate dtnascimento;
 
     public String getNome() {
         return nome;
@@ -48,4 +55,11 @@ public class AdotanteDoadorFilter {
         this.endereco = endereco;
     }
 
+    public LocalDate getDtnascimento() {
+        return dtnascimento;
+    }
+
+    public void setDtnascimento(LocalDate dtnascimento) {
+        this.dtnascimento = dtnascimento;
+    }
 }

@@ -86,6 +86,9 @@ public class AdotanteDoadorRepositoryImpl implements AdotanteDoadorRepositoryQue
             predicates.add(builder.like(builder.lower(root.get("email")),
                     "%" + adotantedoadorfilter.getEmail() + "%"));
         }
+        if(adotantedoadorfilter.getDtnascimento() != null){
+            predicates.add(builder.greaterThanOrEqualTo(root.get("dtnascimento"), adotantedoadorfilter.getDtnascimento()));
+        }
 
         return  predicates.toArray(new Predicate[predicates.size()]);
 
