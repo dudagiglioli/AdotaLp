@@ -5,12 +5,14 @@ public class CidadeDTO {
     private Integer id;
     private String nome;
     private String nomestado;
+    private String sigla;
 
 
-    public CidadeDTO(Integer id, String nome, String nomestado) {
+    public CidadeDTO(Integer id, String nome, String nomestado, String sigla) {
         this.id = id;
         this.nome = nome;
         this.nomestado = nomestado;
+        this.sigla = sigla;
     }
 
     public Integer getId() {
@@ -35,5 +37,13 @@ public class CidadeDTO {
 
     public void setNomestado(String nomestado) {
         this.nomestado = nomestado;
+    }
+
+    public String getSigla() {
+        return sigla;
+    }
+
+    public void setSigla(String sigla) {
+        this.sigla = sigla;
     }
 }

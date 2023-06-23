@@ -3,6 +3,7 @@ package com.br.etec.sp.etec.AdotaLp.resources;
 import com.br.etec.sp.etec.AdotaLp.model.Cidade;
 import com.br.etec.sp.etec.AdotaLp.repository.CidadeRepository;
 import com.br.etec.sp.etec.AdotaLp.repository.filter.CidadeFilter;
+import com.br.etec.sp.etec.AdotaLp.repository.projections.CidadeDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -21,7 +22,7 @@ public class CidadeResource {
     private CidadeRepository cidaderepository;
 
     @GetMapping()
-    public Page<Cidade> pesquisar(CidadeFilter cidadefilter, Pageable pageable){
+    public Page<CidadeDTO> pesquisar(CidadeFilter cidadefilter, Pageable pageable){
         return cidaderepository.Filtrar(cidadefilter, pageable);
     }
 

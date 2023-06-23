@@ -4,6 +4,7 @@ public class CidadeFilter {
 
     private String nome;
     private String nomestado;
+    private String sigla;
 
     public String getNomestado() {
         return nomestado;
@@ -19,5 +20,13 @@ public class CidadeFilter {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public String getSigla() {
+        return sigla;
+    }
+
+    public void setSigla(String sigla) {
+        this.sigla = sigla;
     }
 }
