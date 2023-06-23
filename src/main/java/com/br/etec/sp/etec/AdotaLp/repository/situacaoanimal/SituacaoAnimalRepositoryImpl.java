@@ -3,6 +3,7 @@ package com.br.etec.sp.etec.AdotaLp.repository.situacaoanimal;
 import com.br.etec.sp.etec.AdotaLp.model.Raca;
 import com.br.etec.sp.etec.AdotaLp.model.SituacaoAnimal;
 import com.br.etec.sp.etec.AdotaLp.repository.filter.SituacaoAnimalFilter;
+import com.br.etec.sp.etec.AdotaLp.repository.projections.SituacaoAnimalDTO;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -24,11 +25,15 @@ public class SituacaoAnimalRepositoryImpl implements SituacaoAnimalRepositoryQue
     private EntityManager manager;
 
     @Override
-    public Page<SituacaoAnimal> Filtrar(SituacaoAnimalFilter situacaoanimalfilter, Pageable pageable){
+    public Page<SituacaoAnimalDTO> Filtrar(SituacaoAnimalFilter situacaoanimalfilter, Pageable pageable){
 
         CriteriaBuilder builder = manager.getCriteriaBuilder();
-        CriteriaQuery<SituacaoAnimal> criteria = builder.createQuery(SituacaoAnimal.class);
+        CriteriaQuery<SituacaoAnimalDTO> criteria = builder.createQuery(SituacaoAnimalDTO.class);
         Root<SituacaoAnimal> root = criteria.from(SituacaoAnimal.class);
+
+        criteria.select(builder.construct(SituacaoAnimalDTO.class,
+                root.get("id"),
+                ))
 
         Predicate[] predicates = criarrestricoes(situacaoanimalfilter, builder, root);
         criteria.where(predicates);

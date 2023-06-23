@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 public class AdocaoDoacaoDTO {
 
+    private Integer id;
     private LocalDate dataadocao;
     private String nomeanimal;
     private String raca;
@@ -12,7 +13,8 @@ public class AdocaoDoacaoDTO {
     private String nomecidade;
     private String noomeestado;
 
-    public AdocaoDoacaoDTO(LocalDate dataadocao, String nomeanimal, String raca, String nomeadotante, String nomedoador, String nomecidade, String noomeestado) {
+    public AdocaoDoacaoDTO(Integer id, LocalDate dataadocao, String nomeanimal, String raca, String nomeadotante, String nomedoador, String nomecidade, String noomeestado) {
+        this.id = id;
         this.dataadocao = dataadocao;
         this.nomeanimal = nomeanimal;
         this.raca = raca;
@@ -20,6 +22,14 @@ public class AdocaoDoacaoDTO {
         this.nomedoador = nomedoador;
         this.nomecidade = nomecidade;
         this.noomeestado = noomeestado;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public LocalDate getDataadocao() {

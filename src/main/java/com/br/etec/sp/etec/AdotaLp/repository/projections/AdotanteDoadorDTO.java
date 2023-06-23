@@ -2,6 +2,7 @@ package com.br.etec.sp.etec.AdotaLp.repository.projections;
 
 public class AdotanteDoadorDTO {
 
+    private Integer id;
     private String nome;
     private String cpf;
     private String telefone;
@@ -10,7 +11,8 @@ public class AdotanteDoadorDTO {
     private String nomecidade;
     private String nomeestado;
 
-    public AdotanteDoadorDTO(String nome, String cpf, String telefone, String email, String endereco, String nomecidade, String nomeestado) {
+    public AdotanteDoadorDTO(Integer id, String nome, String cpf, String telefone, String email, String endereco, String nomecidade, String nomeestado) {
+        this.id = id;
         this.nome = nome;
         this.cpf = cpf;
         this.telefone = telefone;
@@ -18,6 +20,14 @@ public class AdotanteDoadorDTO {
         this.endereco = endereco;
         this.nomecidade = nomecidade;
         this.nomeestado = nomeestado;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNome() {
