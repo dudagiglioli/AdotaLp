@@ -76,8 +76,8 @@ public class EstadoRepositoryImpl implements EstadoRepositoryQuery{
 
         }
         if (!StringUtils.isEmpty(estadofilter.getSigla())){
-            predicates.add(builder.like(builder.lower(root.get("sigla")),
-                    "%" + estadofilter.getSigla().toLowerCase() + "%"));
+            predicates.add(builder.equal(builder.lower(root.get("sigla")),
+                    estadofilter.getSigla().toLowerCase()));
         }
 
         return predicates.toArray(new Predicate[predicates.size()]);
