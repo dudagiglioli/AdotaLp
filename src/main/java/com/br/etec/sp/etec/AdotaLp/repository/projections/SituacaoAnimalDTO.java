@@ -2,21 +2,21 @@ package com.br.etec.sp.etec.AdotaLp.repository.projections;
 
 public class SituacaoAnimalDTO {
 
-    private String id;
+    private Integer id;
     private String situacao;
     private String nomeanimal;
 
-    public SituacaoAnimalDTO(String id, String situacao, String nomeanimal) {
+    public SituacaoAnimalDTO(Integer id, String situacao, String nomeanimal) {
         this.id = id;
         this.situacao = situacao;
         this.nomeanimal = nomeanimal;
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

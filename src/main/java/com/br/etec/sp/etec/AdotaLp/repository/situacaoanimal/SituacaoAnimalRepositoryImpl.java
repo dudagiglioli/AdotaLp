@@ -1,6 +1,5 @@
 package com.br.etec.sp.etec.AdotaLp.repository.situacaoanimal;
 
-import com.br.etec.sp.etec.AdotaLp.model.Raca;
 import com.br.etec.sp.etec.AdotaLp.model.SituacaoAnimal;
 import com.br.etec.sp.etec.AdotaLp.repository.filter.SituacaoAnimalFilter;
 import com.br.etec.sp.etec.AdotaLp.repository.projections.SituacaoAnimalDTO;
@@ -33,13 +32,16 @@ public class SituacaoAnimalRepositoryImpl implements SituacaoAnimalRepositoryQue
 
         criteria.select(builder.construct(SituacaoAnimalDTO.class,
                 root.get("id"),
-                ))
+                root.get("situacao"),
+                root.get("situacaoanimal").get("nome")
+        ));
 
         Predicate[] predicates = criarrestricoes(situacaoanimalfilter, builder, root);
         criteria.where(predicates);
         criteria.orderBy(builder.asc(root.get("situacao")));
 
-        TypedQuery<SituacaoAnimal> query = manager.createQuery(criteria);
+        TypedQuery<SituacaoAnimalDTO> query = manager.createQuery(criteria);
+        addrestricoesdepaginacao(query, pageable);
 
         return new PageImpl<>(query.getResultList(), pageable, total(situacaoanimalfilter));
     }
@@ -58,7 +60,7 @@ public class SituacaoAnimalRepositoryImpl implements SituacaoAnimalRepositoryQue
         return  manager.createQuery(criteria).getSingleResult();
     }
 
-    private void addrestricoesdepaginacao(TypedQuery<SituacaoAnimal> query, Pageable pageable){
+    private void addrestricoesdepaginacao(TypedQuery<?> query, Pageable pageable){
         int paginaatual = pageable.getPageNumber();
         int totalresgistros = pageable.getPageSize();
         int primeiroregistrodepagina = paginaatual * totalresgistros;
@@ -72,11 +74,14 @@ public class SituacaoAnimalRepositoryImpl implements SituacaoAnimalRepositoryQue
         List<Predicate> predicates = new ArrayList<>();
 
         if (!StringUtils.isEmpty(situacaoanimalfilter.getSituacao())){
-            predicates.add(builder.like(builder.lower(root.get("descricao")),
+            predicates.add(builder.like(builder.lower(root.get("situacao")),
                     "%" + situacaoanimalfilter.getSituacao() + "%"));
+        }
+        if (!StringUtils.isEmpty(situacaoanimalfilter.getNomeanimal())){
+            predicates.add(builder.like(builder.lower(root.get("situacaoanimal").get("nome")),
+                    "%" + situacaoanimalfilter.getNomeanimal() + "%"));
         }
 
         return predicates.toArray(new Predicate[predicates.size()]);
-
     }
 }
