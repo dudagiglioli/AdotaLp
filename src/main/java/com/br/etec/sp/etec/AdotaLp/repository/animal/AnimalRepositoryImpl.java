@@ -2,6 +2,7 @@ package com.br.etec.sp.etec.AdotaLp.repository.animal;
 
 import com.br.etec.sp.etec.AdotaLp.model.Animal;
 import com.br.etec.sp.etec.AdotaLp.repository.filter.AnimalFilter;
+import com.br.etec.sp.etec.AdotaLp.repository.projections.AnimalDTO;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -23,17 +24,30 @@ public class AnimalRepositoryImpl implements  AnimalRepositoryQuery{
     private EntityManager manager;
 
     @Override
-    public Page<Animal> Filtrar(AnimalFilter animalfilter, Pageable pageable) {
+    public Page<AnimalDTO> Filtrar(AnimalFilter animalfilter, Pageable pageable) {
 
         CriteriaBuilder builder = manager.getCriteriaBuilder();
-        CriteriaQuery<Animal> criteria = builder.createQuery(Animal.class);
+        CriteriaQuery<AnimalDTO> criteria = builder.createQuery(AnimalDTO.class);
         Root<Animal> root = criteria.from(Animal.class);
+
+        criteria.select(builder.construct(AnimalDTO.class,
+                root.get("id"),
+                root.get("nome"),
+                root.get("sexo"),
+                root.get("idade"),
+                root.get("porte"),
+                root.get("descricaoraca"),
+                root.get("situcaoanimal"),
+                root.get("nomecidade"),
+                root.get("nomeestado")
+                ));
 
         Predicate[] predicates = criarrestricoes(animalfilter, builder, root);
         criteria.where(predicates);
         criteria.orderBy(builder.asc(root.get("nome")));
 
-        TypedQuery<Animal> query = manager.createQuery(criteria);
+        TypedQuery<AnimalDTO> query = manager.createQuery(criteria);
+        adicionasrestricoesdepaginacao(query, pageable);
 
         return new PageImpl<>(query.getResultList(), pageable, total(animalfilter));
     }
@@ -54,7 +68,7 @@ public class AnimalRepositoryImpl implements  AnimalRepositoryQuery{
         return manager.createQuery(criteria).getSingleResult();
     }
 
-    private void adicionasrestricoesdepaginacao(TypedQuery<Animal> query, Pageable pageable){
+    private void adicionasrestricoesdepaginacao(TypedQuery<?> query, Pageable pageable){
         int paginaatual = pageable.getPageNumber();
         int totalregistrospagina = pageable.getPageSize();
         int primeiroregistropagina = paginaatual * totalregistrospagina;
@@ -74,6 +88,26 @@ public class AnimalRepositoryImpl implements  AnimalRepositoryQuery{
 
         if (!StringUtils.isEmpty(animalfilter.getSexo())){
             predicates.add(builder.like(builder.lower(root.get("sexo")),
+                    "%" + animalfilter.getSexo().toLowerCase() + "%"));
+        }
+
+        if (!StringUtils.isEmpty(animalfilter.getNomecidade())){
+            predicates.add(builder.like(builder.lower(root.get("nomecidade")),
+                    "%" + animalfilter.getSexo().toLowerCase() + "%"));
+        }
+
+        if (!StringUtils.isEmpty(animalfilter.getNomeestado())){
+            predicates.add(builder.like(builder.lower(root.get("nomeestado")),
+                    "%" + animalfilter.getSexo().toLowerCase() + "%"));
+        }
+
+        if (!StringUtils.isEmpty(animalfilter.getDescricaoraca())){
+            predicates.add(builder.like(builder.lower(root.get("descricaoraca")),
+                    "%" + animalfilter.getSexo().toLowerCase() + "%"));
+        }
+
+        if (!StringUtils.isEmpty(animalfilter.getSituacaoanimal())){
+            predicates.add(builder.like(builder.lower(root.get("situacaoanimal")),
                     "%" + animalfilter.getSexo().toLowerCase() + "%"));
         }
 
