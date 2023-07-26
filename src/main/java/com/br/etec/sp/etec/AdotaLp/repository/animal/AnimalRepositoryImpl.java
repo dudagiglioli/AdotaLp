@@ -36,10 +36,10 @@ public class AnimalRepositoryImpl implements  AnimalRepositoryQuery{
                 root.get("sexo"),
                 root.get("idade"),
                 root.get("porte"),
-                root.get("descricaoraca"),
-                root.get("situcaoanimal"),
-                root.get("nomecidade"),
-                root.get("nomeestado")
+                root.get("raca").get("descricao"),
+                root.get("situacaoanimal").get("situcao"),
+                root.get("cidade").get("nomecidade"),
+                root.get("estado").get("nomeestado")
                 ));
 
         Predicate[] predicates = criarrestricoes(animalfilter, builder, root);
@@ -92,8 +92,8 @@ public class AnimalRepositoryImpl implements  AnimalRepositoryQuery{
         }
 
         if (!StringUtils.isEmpty(animalfilter.getNomecidade())){
-            predicates.add(builder.like(builder.lower(root.get("nomecidade")),
-                    "%" + animalfilter.getSexo().toLowerCase() + "%"));
+            predicates.add(builder.like(builder.lower(root.get("nomecidade").get("nomecidade")),
+                    "%" + animalfilter.getNomecidade().toLowerCase() + "%"));
         }
 
         if (!StringUtils.isEmpty(animalfilter.getNomeestado())){

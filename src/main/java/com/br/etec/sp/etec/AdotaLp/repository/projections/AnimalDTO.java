@@ -7,92 +7,92 @@ public class AnimalDTO {
     private String sexo;
     private Integer idade;
     private Integer porte;
-    private String descricaoraca;
-    private String situacaoanimal;
+    private String descricao;
+    private String situacao;
     private String nomecidade;
     private String nomeestado;
 
-    public AnimalDTO(Integer id, String nome, String sexo, Integer idade, Integer porte, String descricaoraca, String situacaoanimal, String nomecidade, String nomeestado) {
-        this.id = id;
-        this.nome = nome;
-        this.sexo = sexo;
-        this.idade = idade;
-        this.porte = porte;
-        this.descricaoraca = descricaoraca;
-        this.situacaoanimal = situacaoanimal;
-        this.nomecidade = nomecidade;
-        this.nomeestado = nomeestado;
-    }
+  public AnimalDTO(Integer id, String nome, String sexo, Integer idade, Integer porte, String descricao, String situacao, String nomecidade, String nomeestado) {
+    this.id = id;
+    this.nome = nome;
+    this.sexo = sexo;
+    this.idade = idade;
+    this.porte = porte;
+    this.descricao = descricao;
+    this.situacao = situacao;
+    this.nomecidade = nomecidade;
+    this.nomeestado = nomeestado;
+  }
 
-    public Integer getId() {
-        return id;
-    }
+  public Integer getId() {
+    return id;
+  }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+  public void setId(Integer id) {
+    this.id = id;
+  }
 
-    public String getNome() {
-        return nome;
-    }
+  public String getNome() {
+    return nome;
+  }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+  public void setNome(String nome) {
+    this.nome = nome;
+  }
 
-    public String getSexo() {
-        return sexo;
-    }
+  public String getSexo() {
+    return sexo;
+  }
 
-    public void setSexo(String sexo) {
-        this.sexo = sexo;
-    }
+  public void setSexo(String sexo) {
+    this.sexo = sexo;
+  }
 
-    public Integer getIdade() {
-        return idade;
-    }
+  public Integer getIdade() {
+    return idade;
+  }
 
-    public void setIdade(Integer idade) {
-        this.idade = idade;
-    }
+  public void setIdade(Integer idade) {
+    this.idade = idade;
+  }
 
-    public Integer getPorte() {
-        return porte;
-    }
+  public Integer getPorte() {
+    return porte;
+  }
 
-    public void setPorte(Integer porte) {
-        this.porte = porte;
-    }
+  public void setPorte(Integer porte) {
+    this.porte = porte;
+  }
 
-    public String getDescricaoraca() {
-        return descricaoraca;
-    }
+  public String getDescricao() {
+    return descricao;
+  }
 
-    public void setDescricaoraca(String descricaoraca) {
-        this.descricaoraca = descricaoraca;
-    }
+  public void setDescricao(String descricao) {
+    this.descricao = descricao;
+  }
 
-    public String getSituacaoanimal() {
-        return situacaoanimal;
-    }
+  public String getSituacao() {
+    return situacao;
+  }
 
-    public void setSituacaoanimal(String situacaoanimal) {
-        this.situacaoanimal = situacaoanimal;
-    }
+  public void setSituacao(String situacao) {
+    this.situacao = situacao;
+  }
 
-    public String getNomecidade() {
-        return nomecidade;
-    }
+  public String getNomecidade() {
+    return nomecidade;
+  }
 
-    public void setNomecidade(String nomecidade) {
-        this.nomecidade = nomecidade;
-    }
+  public void setNomecidade(String nomecidade) {
+    this.nomecidade = nomecidade;
+  }
 
-    public String getNomeestado() {
-        return nomeestado;
-    }
+  public String getNomeestado() {
+    return nomeestado;
+  }
 
-    public void setNomeestado(String nomeestado) {
-        this.nomeestado = nomeestado;
-    }
+  public void setNomeestado(String nomeestado) {
+    this.nomeestado = nomeestado;
+  }
 }
