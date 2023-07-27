@@ -31,7 +31,7 @@ public class AnimalRepositoryImpl implements  AnimalRepositoryQuery{
 
         Predicate[] predicates = criarrestricoes(animalfilter, builder, root);
         criteria.where(predicates);
-        criteria.orderBy(builder.asc(root.get("nome")));
+        criteria.orderBy(builder.asc(root.get("nomeanimal")));
 
         TypedQuery<Animal> query = manager.createQuery(criteria);
         adicionasrestricoesdepaginacao(query, pageable);
@@ -47,7 +47,7 @@ public class AnimalRepositoryImpl implements  AnimalRepositoryQuery{
 
         Predicate[] predicates = criarrestricoes(animalfilter, builder, root);
         criteria.where(predicates);
-        criteria.orderBy(builder.asc(root.get("nome")));
+        criteria.orderBy(builder.asc(root.get("nomeanimal")));
 
         criteria.select(builder.count(root));
 
@@ -68,22 +68,15 @@ public class AnimalRepositoryImpl implements  AnimalRepositoryQuery{
 
         List<Predicate> predicates = new ArrayList<>();
 
-        if (!StringUtils.isEmpty(animalfilter.getNome())){
-            predicates.add(builder.like(builder.lower(root.get("nome")),
-                    "%" + animalfilter.getNome().toLowerCase() + "%"));
+        if (!StringUtils.isEmpty(animalfilter.getNomeanimal())){
+            predicates.add(builder.like(builder.lower(root.get("nomeanimal")),
+                    "%" + animalfilter.getNomeanimal().toLowerCase() + "%"));
         }
 
         if (!StringUtils.isEmpty(animalfilter.getSexo())){
             predicates.add(builder.like(builder.lower(root.get("sexo")),
                     "%" + animalfilter.getSexo().toLowerCase() + "%"));
         }
-
-        if (!StringUtils.isEmpty(animalfilter.getNomecidade())){
-            predicates.add(builder.like(builder.lower(root.get("nomecidade").get("nomecidade")),
-                    "%" + animalfilter.getNomecidade().toLowerCase() + "%"));
-        }
-
-
         if(animalfilter.getIdade() != null){
             predicates.add(builder.equal(root.get("idade"), animalfilter.getIdade()));
         }

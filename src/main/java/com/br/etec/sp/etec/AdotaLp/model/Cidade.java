@@ -14,7 +14,7 @@ public class Cidade {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String nome;
+    private String nomecidade;
 
     public Integer getId() {
         return id;
@@ -24,12 +24,12 @@ public class Cidade {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getNomecidade() {
+        return nomecidade;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNomecidade(String nomecidade) {
+        this.nomecidade = nomecidade;
     }
 
     @Override

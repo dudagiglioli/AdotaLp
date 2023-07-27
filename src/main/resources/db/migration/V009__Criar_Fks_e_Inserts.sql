@@ -7,13 +7,13 @@ alter table adocaodoacao add constraint FK_adotante_adocaodoacao foreign key(ida
 alter table adocaodoacao add constraint FK_doador_adocaodoacao foreign key(iddoador) references adotantedoador(id);
 alter table fotosanimal add constraint FK_animal_fotosanimal foreign key(idanimal) references animal(id);
 
-insert into estado(nome, sigla) values ('São Paulo', 'SP');
-insert into estado(nome, sigla) values ('Rio de Janeiro', 'RJ');
+insert into estado(nomeestado, sigla) values ('São Paulo', 'SP');
+insert into estado(nomeestado, sigla) values ('Rio de Janeiro', 'RJ');
 
-insert into cidade(nome, idestado) values ('São Paulo', 1);
-insert into cidade(nome, idestado) values ('Ourinhos', 1);
-insert into cidade(nome, idestado) values ('Parati', 2);
-insert into cidade(nome, idestado) values ('Rio de Janeiro', 2);
+insert into cidade(nomecidade, idestado) values ('São Paulo', 1);
+insert into cidade(nomecidade, idestado) values ('Ourinhos', 1);
+insert into cidade(nomecidade, idestado) values ('Parati', 2);
+insert into cidade(nomecidade, idestado) values ('Rio de Janeiro', 2);
 
 insert into adotantedoador(nome, cpf, telefone, email, dtnascimento, endereco, idcidade)
 values ('Duda Giglioli', '51547682132', '(14)99812-1409', 'dudaguilice@gmail.com', '2000-08-19', 'Rua das Flores, 153', 1);
@@ -25,9 +25,9 @@ values ('Guilherme Martos', '1154203610', '(14)99278-9520', 'guimartos@gmail.com
 insert into raca(descricao) values ('Pinscher');
 insert into raca(descricao) values ('Labrador');
 
-insert into animal(nome, sexo, idade, porte, idraca) values ('Thanos', 'M', 3, 1, 1);
-insert into animal(nome, sexo, idade, porte, idraca) values ('Gael', 'M', 2, 3, 2);
-insert into animal(nome, sexo, idade, porte, idraca) values ('Kiwi', 'M', 5, 2, 1);
+insert into animal(nomeanimal, sexo, idade, porte, idraca) values ('Thanos', 'M', 3, 1, 1);
+insert into animal(nomeanimal, sexo, idade, porte, idraca) values ('Gael', 'M', 2, 3, 2);
+insert into animal(nomeanimal, sexo, idade, porte, idraca) values ('Kiwi', 'M', 5, 2, 1);
 
 insert into situacaoanimal(situacao, idanimal) values ('Bom Estado', 1);
 insert into situacaoanimal(situacao, idanimal) values ('Vacinas ok, bom estado', 2);

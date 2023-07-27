@@ -33,7 +33,7 @@ public class EstadoRepositoryImpl implements EstadoRepositoryQuery{
 
         Predicate[] predicates = criarrestricoes(estadofilter, builder, root);
         criteria.where(predicates);
-        criteria.orderBy(builder.asc(root.get("nome")));
+        criteria.orderBy(builder.asc(root.get("nomeestado")));
 
         TypedQuery<Estado> query = manager.createQuery(criteria);
         addrestricoespaginacao(query, pageable);
@@ -49,7 +49,7 @@ public class EstadoRepositoryImpl implements EstadoRepositoryQuery{
 
         Predicate[] predicates = criarrestricoes(estadofilter, builder, root);
         criteria.where(predicates);
-        criteria.orderBy(builder.asc(root.get("nome")));
+        criteria.orderBy(builder.asc(root.get("nomeestado")));
 
         criteria.select(builder.count(root));
 
@@ -70,9 +70,9 @@ public class EstadoRepositoryImpl implements EstadoRepositoryQuery{
 
         List<Predicate> predicates = new ArrayList<>();
 
-        if (!StringUtils.isEmpty(estadofilter.getNome())){
-            predicates.add(builder.like(builder.lower(root.get("nome")),
-                    "%" + estadofilter.getNome().toLowerCase() + "%"));
+        if (!StringUtils.isEmpty(estadofilter.getNomeestado())){
+            predicates.add(builder.like(builder.lower(root.get("nomeestado")),
+                    "%" + estadofilter.getNomeestado().toLowerCase() + "%"));
 
         }
         if (!StringUtils.isEmpty(estadofilter.getSigla())){

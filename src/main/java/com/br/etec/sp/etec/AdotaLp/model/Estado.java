@@ -14,7 +14,7 @@ public class Estado {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String nome;
+    private String nomeestado;
     private String sigla;
 
     public Integer getId() {
@@ -25,12 +25,12 @@ public class Estado {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getNomeestado() {
+        return nomeestado;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNomeestado(String nomeestado) {
+        this.nomeestado = nomeestado;
     }
 
     public String getSigla() {

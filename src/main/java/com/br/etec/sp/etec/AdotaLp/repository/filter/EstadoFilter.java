@@ -2,7 +2,7 @@ package com.br.etec.sp.etec.AdotaLp.repository.filter;
 
 public class EstadoFilter {
 
-    private String nome;
+    private String nomeestado;
     private String sigla;
 
     public String getSigla() {
@@ -13,11 +13,11 @@ public class EstadoFilter {
         this.sigla = sigla;
     }
 
-    public String getNome() {
-        return nome;
+    public String getNomeestado() {
+        return nomeestado;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNomeestado(String nomeestado) {
+        this.nomeestado = nomeestado;
     }
 }
