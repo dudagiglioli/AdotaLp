@@ -6,6 +6,7 @@ alter table adocaodoacao add constraint FK_animal_adocaodoacao foreign key(idani
 alter table adocaodoacao add constraint FK_adotante_adocaodoacao foreign key(idadotante) references adotantedoador(id);
 alter table adocaodoacao add constraint FK_doador_adocaodoacao foreign key(iddoador) references adotantedoador(id);
 alter table fotosanimal add constraint FK_animal_fotosanimal foreign key(idanimal) references animal(id);
+alter table animal add constraint FK_animal_cidade foreign key(idcidade) references cidade(id);
 
 insert into estado(nomeestado, sigla) values ('São Paulo', 'SP');
 insert into estado(nomeestado, sigla) values ('Rio de Janeiro', 'RJ');
@@ -25,9 +26,9 @@ values ('Guilherme Martos', '1154203610', '(14)99278-9520', 'guimartos@gmail.com
 insert into raca(descricao) values ('Pinscher');
 insert into raca(descricao) values ('Labrador');
 
-insert into animal(nomeanimal, sexo, idade, porte, idraca) values ('Thanos', 'M', 3, 1, 1);
-insert into animal(nomeanimal, sexo, idade, porte, idraca) values ('Gael', 'M', 2, 3, 2);
-insert into animal(nomeanimal, sexo, idade, porte, idraca) values ('Kiwi', 'M', 5, 2, 1);
+insert into animal(nomeanimal, sexo, idade, porte, idraca, idcidade) values ('Thanos', 'M', 3, 1, 1, 2);
+insert into animal(nomeanimal, sexo, idade, porte, idraca, idcidade) values ('Gael', 'M', 2, 3, 2, 4);
+insert into animal(nomeanimal, sexo, idade, porte, idraca, idcidade) values ('Kiwi', 'M', 5, 2, 1, 3);
 
 insert into situacaoanimal(situacao, idanimal) values ('Bom Estado', 1);
 insert into situacaoanimal(situacao, idanimal) values ('Vacinas ok, bom estado', 2);
