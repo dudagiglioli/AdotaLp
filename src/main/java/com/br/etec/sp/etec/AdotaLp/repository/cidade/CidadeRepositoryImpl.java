@@ -2,7 +2,6 @@ package com.br.etec.sp.etec.AdotaLp.repository.cidade;
 
 import com.br.etec.sp.etec.AdotaLp.model.Cidade;
 import com.br.etec.sp.etec.AdotaLp.repository.filter.CidadeFilter;
-import com.br.etec.sp.etec.AdotaLp.repository.projections.CidadeDTO;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -24,24 +23,17 @@ public class CidadeRepositoryImpl implements  CidadeRepositoryQuery{
     private EntityManager manager;
 
     @Override
-    public Page<CidadeDTO> Filtrar(CidadeFilter cidadefilter, Pageable pageable) {
+    public Page<Cidade> Filtrar(CidadeFilter cidadefilter, Pageable pageable) {
 
         CriteriaBuilder builder = manager.getCriteriaBuilder();
-        CriteriaQuery<CidadeDTO> criteria = builder.createQuery(CidadeDTO.class);
+        CriteriaQuery<Cidade> criteria = builder.createQuery(Cidade.class);
         Root<Cidade> root = criteria.from((Cidade.class));
-
-        criteria.select(builder.construct(CidadeDTO.class,
-                root.get("id"),
-                root.get("nome"),
-                root.get("estado").get("nome"),
-                root.get("estado").get("sigla")
-        ));
 
         Predicate[] predicates = criarrestricoes(cidadefilter, builder, root);
         criteria.where(predicates);
         criteria.orderBy((builder.asc(root.get("nome"))));
 
-        TypedQuery<CidadeDTO> query= manager.createQuery(criteria);
+        TypedQuery<Cidade> query= manager.createQuery(criteria);
         addrestricoesdepaginacao(query, pageable);
 
         return new PageImpl<>(query.getResultList(), pageable, total(cidadefilter));
@@ -80,15 +72,6 @@ public class CidadeRepositoryImpl implements  CidadeRepositoryQuery{
             predicates.add(builder.like(builder.lower(root.get("nome")),
                     "%" + cidadefilter.getNome().toLowerCase() + "%"));
         }
-        if (!StringUtils.isEmpty(cidadefilter.getNomestado())){
-            predicates.add(builder.like(builder.lower(root.get("estado").get("nome")),
-                    "%" + cidadefilter.getNomestado().toLowerCase() + "%"));
-        }
-        if (!StringUtils.isEmpty(cidadefilter.getSigla())){
-            predicates.add(builder.equal(builder.lower(root.get("estado").get("sigla")),
-                    cidadefilter.getSigla().toLowerCase()));
-        }
-
 
         return predicates.toArray(new Predicate[predicates.size()]);
 

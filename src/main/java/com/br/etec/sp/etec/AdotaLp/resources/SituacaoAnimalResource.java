@@ -2,9 +2,7 @@ package com.br.etec.sp.etec.AdotaLp.resources;
 
 import com.br.etec.sp.etec.AdotaLp.model.SituacaoAnimal;
 import com.br.etec.sp.etec.AdotaLp.repository.SituacaoAnimalRepository;
-import com.br.etec.sp.etec.AdotaLp.repository.filter.RacaFilter;
 import com.br.etec.sp.etec.AdotaLp.repository.filter.SituacaoAnimalFilter;
-import com.br.etec.sp.etec.AdotaLp.repository.projections.SituacaoAnimalDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -23,7 +21,7 @@ public class SituacaoAnimalResource {
     private SituacaoAnimalRepository situacaoanimalrepository;
 
     @GetMapping()
-    public Page<SituacaoAnimalDTO> pesquisar(SituacaoAnimalFilter situacaoanimalfilter, Pageable pageable){
+    public Page<SituacaoAnimal> pesquisar(SituacaoAnimalFilter situacaoanimalfilter, Pageable pageable){
         return situacaoanimalrepository.Filtrar(situacaoanimalfilter, pageable);
     }
 
