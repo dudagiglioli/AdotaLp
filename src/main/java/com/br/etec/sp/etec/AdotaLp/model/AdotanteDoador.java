@@ -23,6 +23,7 @@ public class AdotanteDoador {
     private LocalDate dtnascimento;
     private String endereco;
     private String fotoperfil;
+    private String senha;
 
     public Integer getId() {
         return id;
@@ -83,6 +84,14 @@ public class AdotanteDoador {
     public String getFotoperfil() {return fotoperfil;}
 
     public void setFotoperfil(String fotoperfil) { this.fotoperfil = fotoperfil; }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
 
     @Override
     public boolean equals(Object o) {
