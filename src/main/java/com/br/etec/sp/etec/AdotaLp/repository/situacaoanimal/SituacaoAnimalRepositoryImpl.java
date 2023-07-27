@@ -2,6 +2,7 @@ package com.br.etec.sp.etec.AdotaLp.repository.situacaoanimal;
 
 import com.br.etec.sp.etec.AdotaLp.model.SituacaoAnimal;
 import com.br.etec.sp.etec.AdotaLp.repository.filter.SituacaoAnimalFilter;
+import com.br.etec.sp.etec.AdotaLp.repository.projections.SituacaoAnimalDTO;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -23,17 +24,23 @@ public class SituacaoAnimalRepositoryImpl implements SituacaoAnimalRepositoryQue
     private EntityManager manager;
 
     @Override
-    public Page<SituacaoAnimal> Filtrar(SituacaoAnimalFilter situacaoanimalfilter, Pageable pageable){
+    public Page<SituacaoAnimalDTO> Filtrar(SituacaoAnimalFilter situacaoanimalfilter, Pageable pageable){
 
         CriteriaBuilder builder = manager.getCriteriaBuilder();
-        CriteriaQuery<SituacaoAnimal> criteria = builder.createQuery(SituacaoAnimal.class);
+        CriteriaQuery<SituacaoAnimalDTO> criteria = builder.createQuery(SituacaoAnimalDTO.class);
         Root<SituacaoAnimal> root = criteria.from(SituacaoAnimal.class);
+
+        criteria.select(builder.construct(SituacaoAnimalDTO.class,
+                root.get("id"),
+                root.get("situacao"),
+                root.get("situacaoanimal").get("nomeanimal")
+        ));
 
         Predicate[] predicates = criarrestricoes(situacaoanimalfilter, builder, root);
         criteria.where(predicates);
         criteria.orderBy(builder.asc(root.get("situacao")));
 
-        TypedQuery<SituacaoAnimal> query = manager.createQuery(criteria);
+        TypedQuery<SituacaoAnimalDTO> query = manager.createQuery(criteria);
         addrestricoesdepaginacao(query, pageable);
 
         return new PageImpl<>(query.getResultList(), pageable, total(situacaoanimalfilter));
@@ -69,6 +76,10 @@ public class SituacaoAnimalRepositoryImpl implements SituacaoAnimalRepositoryQue
         if (!StringUtils.isEmpty(situacaoanimalfilter.getSituacao())){
             predicates.add(builder.like(builder.lower(root.get("situacao")),
                     "%" + situacaoanimalfilter.getSituacao() + "%"));
+        }
+        if (!StringUtils.isEmpty(situacaoanimalfilter.getNomeanimal())){
+            predicates.add(builder.like(builder.lower(root.get("animal").get("nomeanimal")),
+                    "%" + situacaoanimalfilter.getNomeanimal() + "%"));
         }
 
         return predicates.toArray(new Predicate[predicates.size()]);
