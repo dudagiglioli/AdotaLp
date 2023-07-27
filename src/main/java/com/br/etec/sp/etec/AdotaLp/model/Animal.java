@@ -128,4 +128,17 @@ public class Animal {
 
     public void setFotosdoanimal(List<FotosAnimal> fotosdoanimal) { this.fotosdoanimal = fotosdoanimal; }
 
+    //--------------------------------------------------------------------------------------------------------------
+
+    @ManyToOne
+    @JoinColumn(name = "idcidade")
+    private Cidade cidadedoanimal;
+
+    public Cidade getCidadedoanimal() {
+        return cidadedoanimal;
+    }
+
+    public void setCidadedoanimal(Cidade cidadedoanimal) {
+        this.cidadedoanimal = cidadedoanimal;
+    }
 }

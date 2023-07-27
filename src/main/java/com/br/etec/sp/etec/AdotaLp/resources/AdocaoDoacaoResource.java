@@ -3,6 +3,7 @@ package com.br.etec.sp.etec.AdotaLp.resources;
 import com.br.etec.sp.etec.AdotaLp.model.AdocaoDoacao;
 import com.br.etec.sp.etec.AdotaLp.repository.AdocaoDoacaoRepository;
 import com.br.etec.sp.etec.AdotaLp.repository.filter.AdocaoDoacaoFilter;
+import com.br.etec.sp.etec.AdotaLp.repository.projections.AdocaoDoacaoDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -20,7 +21,7 @@ public class AdocaoDoacaoResource {
     private AdocaoDoacaoRepository adocaodoacaorepository;
 
     @GetMapping()
-    public Page<AdocaoDoacao> pesquisar(AdocaoDoacaoFilter adocaodoacaofilter, Pageable pageable){
+    public Page<AdocaoDoacaoDTO> pesquisar(AdocaoDoacaoFilter adocaodoacaofilter, Pageable pageable){
         return adocaodoacaorepository.filtrar(adocaodoacaofilter, pageable);
     }
 

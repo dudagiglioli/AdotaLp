@@ -4,5 +4,6 @@ create table animal(
     nomeanimal varchar(40),
     sexo char(1),
     idade int not null,
-    porte int not null
+    porte int not null,
+    idcidade int not null
 );

@@ -76,4 +76,15 @@ public class Cidade {
 
     //--------------------------------------------------------------------------------------------------------------
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "cidadedoanimal")
+    private List<Animal> cidadedoanimal= new ArrayList<>();
+
+    public List<Animal> getCidadedoanimal() {
+        return cidadedoanimal;
+    }
+
+    public void setCidadedoanimal(List<Animal> cidadedoanimal) {
+        this.cidadedoanimal = cidadedoanimal;
+    }
 }

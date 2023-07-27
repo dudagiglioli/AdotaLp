@@ -1,18 +1,30 @@
-package com.br.etec.sp.etec.AdotaLp.repository.filter;
-
-import org.springframework.format.annotation.DateTimeFormat;
+package com.br.etec.sp.etec.AdotaLp.repository.projections;
 
 import java.time.LocalDate;
 
+public class AdocaoDoacaoDTO {
 
-public class AdocaoDoacaoFilter {
-
-    @DateTimeFormat(pattern = "yyyy/MM/dd")
+    private Integer id;
     private LocalDate dataadocao;
     private String nomeanimal;
     private String nomeadotante;
     private String nomedoador;
 
+    public AdocaoDoacaoDTO(Integer id, LocalDate dataadocao, String nomeanimal, String nomeadotante, String nomedoador) {
+        this.id = id;
+        this.dataadocao = dataadocao;
+        this.nomeanimal = nomeanimal;
+        this.nomeadotante = nomeadotante;
+        this.nomedoador = nomedoador;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public LocalDate getDataadocao() {
         return dataadocao;
@@ -30,7 +42,6 @@ public class AdocaoDoacaoFilter {
         this.nomeanimal = nomeanimal;
     }
 
-
     public String getNomeadotante() {
         return nomeadotante;
     }
@@ -46,5 +57,4 @@ public class AdocaoDoacaoFilter {
     public void setNomedoador(String nomedoador) {
         this.nomedoador = nomedoador;
     }
-
 }
