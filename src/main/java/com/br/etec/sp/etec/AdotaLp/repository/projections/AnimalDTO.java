@@ -1,7 +1,8 @@
-package com.br.etec.sp.etec.AdotaLp.repository.filter;
+package com.br.etec.sp.etec.AdotaLp.repository.projections;
 
-public class AnimalFilter {
+public class AnimalDTO {
 
+    private Integer id;
     private String nomeanimal;
     private String sexo;
     private Integer idade;
@@ -10,6 +11,26 @@ public class AnimalFilter {
     private String descricao;
     private String situacaoanimal;
     private String nomecidade;
+
+
+    public AnimalDTO(Integer id, String nomeanimal, String sexo, Integer idade, Integer porte, String descricao, String situacaoanimal, String nomecidade) {
+        this.id = id;
+        this.nomeanimal = nomeanimal;
+        this.sexo = sexo;
+        this.idade = idade;
+        this.porte = porte;
+        this.descricao = descricao;
+        this.situacaoanimal = situacaoanimal;
+        this.nomecidade = nomecidade;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getNomeanimal() {
         return nomeanimal;
