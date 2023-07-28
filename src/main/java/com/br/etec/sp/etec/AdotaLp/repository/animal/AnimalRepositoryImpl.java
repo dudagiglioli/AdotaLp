@@ -2,6 +2,8 @@ package com.br.etec.sp.etec.AdotaLp.repository.animal;
 
 import com.br.etec.sp.etec.AdotaLp.model.Animal;
 import com.br.etec.sp.etec.AdotaLp.repository.filter.AnimalFilter;
+import com.br.etec.sp.etec.AdotaLp.repository.projections.AnimalDTO;
+import com.br.etec.sp.etec.AdotaLp.repository.projections.CidadeDTO;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -23,17 +25,28 @@ public class AnimalRepositoryImpl implements  AnimalRepositoryQuery{
     private EntityManager manager;
 
     @Override
-    public Page<Animal> Filtrar(AnimalFilter animalfilter, Pageable pageable) {
+    public Page<AnimalDTO> Filtrar(AnimalFilter animalfilter, Pageable pageable) {
 
         CriteriaBuilder builder = manager.getCriteriaBuilder();
-        CriteriaQuery<Animal> criteria = builder.createQuery(Animal.class);
+        CriteriaQuery<AnimalDTO> criteria = builder.createQuery(AnimalDTO.class);
         Root<Animal> root = criteria.from(Animal.class);
+
+        criteria.select(builder.construct(AnimalDTO.class,
+                root.get("id"),
+                root.get("nomeanimal"),
+                root.get("sexo"),
+                root.get("idade"),
+                root.get("porte"),
+                root.get("raca").get("descricao"),
+                root.get("cidadedoanimal").get("nomecidade")
+        ));
+
 
         Predicate[] predicates = criarrestricoes(animalfilter, builder, root);
         criteria.where(predicates);
         criteria.orderBy(builder.asc(root.get("nomeanimal")));
 
-        TypedQuery<Animal> query = manager.createQuery(criteria);
+        TypedQuery<AnimalDTO> query = manager.createQuery(criteria);
         adicionasrestricoesdepaginacao(query, pageable);
 
         return new PageImpl<>(query.getResultList(), pageable, total(animalfilter));
@@ -83,6 +96,15 @@ public class AnimalRepositoryImpl implements  AnimalRepositoryQuery{
 
         if(animalfilter.getPorte() != null){
             predicates.add(builder.equal(root.get("porte"),animalfilter.getPorte()));
+        }
+
+        if (!StringUtils.isEmpty(animalfilter.getDescricao())){
+            predicates.add(builder.like(builder.lower(root.get("raca").get("descricao")),
+                    "%" + animalfilter.getDescricao().toLowerCase() + "%"));
+        }
+        if (!StringUtils.isEmpty(animalfilter.getNomecidade())){
+            predicates.add(builder.like(builder.lower(root.get("cidadedoanimal").get("nomecidade")),
+                    "%" + animalfilter.getNomecidade().toLowerCase() + "%"));
         }
 
         return predicates.toArray(new Predicate[predicates.size()]);

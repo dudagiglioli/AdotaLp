@@ -9,18 +9,15 @@ public class AnimalDTO {
     private Integer porte;
     //FK's
     private String descricao;
-    private String situacaoanimal;
     private String nomecidade;
 
-
-    public AnimalDTO(Integer id, String nomeanimal, String sexo, Integer idade, Integer porte, String descricao, String situacaoanimal, String nomecidade) {
+    public AnimalDTO(Integer id, String nomeanimal, String sexo, Integer idade, Integer porte, String descricao, String nomecidade) {
         this.id = id;
         this.nomeanimal = nomeanimal;
         this.sexo = sexo;
         this.idade = idade;
         this.porte = porte;
         this.descricao = descricao;
-        this.situacaoanimal = situacaoanimal;
         this.nomecidade = nomecidade;
     }
 
@@ -70,14 +67,6 @@ public class AnimalDTO {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
-    }
-
-    public String getSituacaoanimal() {
-        return situacaoanimal;
-    }
-
-    public void setSituacaoanimal(String situacaoanimal) {
-        this.situacaoanimal = situacaoanimal;
     }
 
     public String getNomecidade() {

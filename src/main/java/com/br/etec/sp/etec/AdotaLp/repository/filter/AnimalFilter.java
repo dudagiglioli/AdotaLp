@@ -8,7 +8,6 @@ public class AnimalFilter {
     private Integer porte;
     //FK's
     private String descricao;
-    private String situacaoanimal;
     private String nomecidade;
 
     public String getNomeanimal() {
@@ -49,14 +48,6 @@ public class AnimalFilter {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
-    }
-
-    public String getSituacaoanimal() {
-        return situacaoanimal;
-    }
-
-    public void setSituacaoanimal(String situacaoanimal) {
-        this.situacaoanimal = situacaoanimal;
     }
 
     public String getNomecidade() {
