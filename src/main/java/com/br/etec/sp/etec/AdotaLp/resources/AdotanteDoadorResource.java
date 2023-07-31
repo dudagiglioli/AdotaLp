@@ -3,6 +3,7 @@ package com.br.etec.sp.etec.AdotaLp.resources;
 import com.br.etec.sp.etec.AdotaLp.model.AdotanteDoador;
 import com.br.etec.sp.etec.AdotaLp.repository.AdotanteDoadorRepository;
 import com.br.etec.sp.etec.AdotaLp.repository.filter.AdotanteDoadorFilter;
+import com.br.etec.sp.etec.AdotaLp.repository.projections.AdotanteDoadorDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -20,7 +21,10 @@ public class AdotanteDoadorResource {
     @Autowired
     private AdotanteDoadorRepository adotantedoadorrepository;
 
-
+    @GetMapping()
+    public Page<AdotanteDoadorDTO> pesquisar(AdotanteDoadorFilter adotantedoadorfilter, Pageable pageable){
+        return adotantedoadorrepository.Filtrar(adotantedoadorfilter, pageable);
+    }
 
 
     @GetMapping("/todos")

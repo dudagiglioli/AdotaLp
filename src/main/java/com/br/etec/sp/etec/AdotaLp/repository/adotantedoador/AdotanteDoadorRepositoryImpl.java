@@ -30,6 +30,17 @@ public class AdotanteDoadorRepositoryImpl implements AdotanteDoadorRepositoryQue
         CriteriaQuery<AdotanteDoadorDTO> criteria = builder.createQuery(AdotanteDoadorDTO.class);
         Root<AdotanteDoador> root = criteria.from(AdotanteDoador.class);
 
+        criteria.select(builder.construct(AdotanteDoadorDTO.class,
+            root.get("id"),
+            root.get("nome"),
+        root.get("cpf"),
+        root.get("telefone"),
+        root.get("email"),
+        root.get("dtnascimento"),
+        root.get("endereco"),
+                root.get("cidade").get("nomecidade")
+                ));
+
         Predicate[] predicates = criarrestricoes(adotantedoadorfilter, builder, root);
         criteria.where(predicates);
         criteria.orderBy(builder.asc(root.get("nome")));
@@ -54,7 +65,7 @@ public class AdotanteDoadorRepositoryImpl implements AdotanteDoadorRepositoryQue
        return manager.createQuery(criteria).getSingleResult();
     }
 
-    private void addrestricoesdepaginacao(TypedQuery<AdotanteDoador> query, Pageable pageable) {
+    private void addrestricoesdepaginacao(TypedQuery<?> query, Pageable pageable) {
         int paginaatual = pageable.getPageNumber();
         int totalresgistros = pageable.getPageSize();
         int primeiroregistrodepagina = paginaatual * totalresgistros;
@@ -89,6 +100,10 @@ public class AdotanteDoadorRepositoryImpl implements AdotanteDoadorRepositoryQue
         }
         if(adotantedoadorfilter.getDtnascimento() != null){
             predicates.add(builder.greaterThanOrEqualTo(root.get("dtnascimento"), adotantedoadorfilter.getDtnascimento()));
+        }
+        if (!StringUtils.isEmpty(adotantedoadorfilter.getEmail())) {
+            predicates.add(builder.like(builder.lower(root.get("nomecidade")),
+                    "%" + adotantedoadorfilter.getEmail() + "%"));
         }
 
         return  predicates.toArray(new Predicate[predicates.size()]);
