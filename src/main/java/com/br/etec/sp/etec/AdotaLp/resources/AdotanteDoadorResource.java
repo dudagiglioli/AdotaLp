@@ -20,10 +20,8 @@ public class AdotanteDoadorResource {
     @Autowired
     private AdotanteDoadorRepository adotantedoadorrepository;
 
-    @GetMapping()
-    public Page<AdotanteDoador> pesquisar(AdotanteDoadorFilter adotantedoadorfilter, Pageable pageable){
-        return  adotantedoadorrepository.Filtrar(adotantedoadorfilter, pageable);
-    }
+
+
 
     @GetMapping("/todos")
     public List<AdotanteDoador> listaradotantedoador(){

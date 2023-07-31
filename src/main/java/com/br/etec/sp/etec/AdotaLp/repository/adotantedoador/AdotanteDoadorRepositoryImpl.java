@@ -2,6 +2,7 @@ package com.br.etec.sp.etec.AdotaLp.repository.adotantedoador;
 
 import com.br.etec.sp.etec.AdotaLp.model.AdotanteDoador;
 import com.br.etec.sp.etec.AdotaLp.repository.filter.AdotanteDoadorFilter;
+import com.br.etec.sp.etec.AdotaLp.repository.projections.AdotanteDoadorDTO;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -24,16 +25,16 @@ public class AdotanteDoadorRepositoryImpl implements AdotanteDoadorRepositoryQue
 
 
     @Override
-    public Page<AdotanteDoador> Filtrar(AdotanteDoadorFilter adotantedoadorfilter, Pageable pageable) {
+    public Page<AdotanteDoadorDTO> Filtrar(AdotanteDoadorFilter adotantedoadorfilter, Pageable pageable) {
         CriteriaBuilder builder = manager.getCriteriaBuilder();
-        CriteriaQuery<AdotanteDoador> criteria = builder.createQuery(AdotanteDoador.class);
+        CriteriaQuery<AdotanteDoadorDTO> criteria = builder.createQuery(AdotanteDoadorDTO.class);
         Root<AdotanteDoador> root = criteria.from(AdotanteDoador.class);
 
         Predicate[] predicates = criarrestricoes(adotantedoadorfilter, builder, root);
         criteria.where(predicates);
         criteria.orderBy(builder.asc(root.get("nome")));
 
-        TypedQuery<AdotanteDoador> query = manager.createQuery(criteria);
+        TypedQuery<AdotanteDoadorDTO> query = manager.createQuery(criteria);
 
         return new PageImpl<>(query.getResultList(), pageable, total(adotantedoadorfilter));
     }
