@@ -14,9 +14,7 @@ public class Cidade {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String nome;
-    private Integer uf;
-    private Integer ibge;
+    private String nomecidade;
 
     public Integer getId() {
         return id;
@@ -26,28 +24,12 @@ public class Cidade {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getNomecidade() {
+        return nomecidade;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public Integer getUf() {
-        return uf;
-    }
-
-    public void setUf(Integer uf) {
-        this.uf = uf;
-    }
-
-    public Integer getIbge() {
-        return ibge;
-    }
-
-    public void setIbge(Integer ibge) {
-        this.ibge = ibge;
+    public void setNomecidade(String nomecidade) {
+        this.nomecidade = nomecidade;
     }
 
     @Override
@@ -66,7 +48,7 @@ public class Cidade {
     //--------------------------------------------------------------------------------------------------------------
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "idestado")
     private Estado estado;
 
     public Estado getEstado() {
