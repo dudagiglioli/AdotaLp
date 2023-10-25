@@ -2,31 +2,40 @@ package com.br.etec.sp.etec.AdotaLp.repository.filter;
 
 public class CidadeFilter {
 
-    private String nomecidade;
-    private String nomeestado;
-    private String sigla;
+    private Integer id;
+    private String nome;
+    private Integer uf;
+    private Integer ibge;
 
-    public String getNomecidade() {
-        return nomecidade;
+    public Integer getId() {
+        return id;
     }
 
-    public void setNomecidade(String nomecidade) {
-        this.nomecidade = nomecidade;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getNomeestado() {
-        return nomeestado;
+    public String getNome() {
+        return nome;
     }
 
-    public void setNomeestado(String nomeestado) {
-        this.nomeestado = nomeestado;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public String getSigla() {
-        return sigla;
+    public Integer getUf() {
+        return uf;
     }
 
-    public void setSigla(String sigla) {
-        this.sigla = sigla;
+    public void setUf(Integer uf) {
+        this.uf = uf;
+    }
+
+    public Integer getIbge() {
+        return ibge;
+    }
+
+    public void setIbge(Integer ibge) {
+        this.ibge = ibge;
     }
 }

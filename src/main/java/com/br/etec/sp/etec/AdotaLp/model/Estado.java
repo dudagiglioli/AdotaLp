@@ -15,7 +15,10 @@ public class Estado {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nomeestado;
-    private String sigla;
+    private String uf;
+    private Integer ibge;
+    private Integer pais;
+    private Integer ddd;
 
     public Integer getId() {
         return id;
@@ -33,12 +36,36 @@ public class Estado {
         this.nomeestado = nomeestado;
     }
 
-    public String getSigla() {
-        return sigla;
+    public String getUf() {
+        return uf;
     }
 
-    public void setSigla(String sigla) {
-        this.sigla = sigla;
+    public void setUf(String uf) {
+        this.uf = uf;
+    }
+
+    public Integer getIbge() {
+        return ibge;
+    }
+
+    public void setIbge(Integer ibge) {
+        this.ibge = ibge;
+    }
+
+    public Integer getPais() {
+        return pais;
+    }
+
+    public void setPais(Integer pais) {
+        this.pais = pais;
+    }
+
+    public Integer getDdd() {
+        return ddd;
+    }
+
+    public void setDdd(Integer ddd) {
+        this.ddd = ddd;
     }
 
     @Override
@@ -53,7 +80,6 @@ public class Estado {
     public int hashCode() {
         return Objects.hash(id);
     }
-
 
     //--------------------------------------------------------------------------------------------------------------
 
