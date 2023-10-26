@@ -180,63 +180,63 @@ insert into cidade(nomecidade, idestado) values ('Adamantina', 1),
                                                 ('Votorantim', 1),
                                                 ('Votorantim', 1),
                                                 ('Zacarias', 1),
-                                                ('Rio de Janeiro', 2)
-                                                ('Niterói', 2)
-                                                ('São Gonçalo', 2)
-                                                ('Duque de Caxias', 2)
-                                                ('Nova Iguaçu', 2)
-                                                ('Itaboraí', 2)
-                                                ('São João de Meriti', 2)
-                                                ('Maricá', 2)
-                                                ('Belford Roxo', 2)
-                                                (Nilópolis)
-                                                (Mesquita)
-                                                (Queimados)
-                                                (Magé)
-                                                (Teresópolis)
-                                                (Petrópolis)
-                                                (Cachoeiras de Macacu)
-                                                (Guapimirim)
-                                                (Itacuruçá)
-                                                (Mangaratiba)
-                                                (Rio Bonito)
-                                                (Silva Jardim)
-                                                (Araruama)
-                                                (Saquarema)
-                                                (Arraial do Cabo)
-                                                (Cabo Frio)
-                                                (Armação dos Búzios)
-                                                (Iguaba Grande)
-                                                (Macaé)
-                                                (Campos dos Goytacazes)
-                                                (São Fidélis)
-                                                (Bom Jesus do Itabapoana)
-                                                (Natividade)
-                                                (Porciúncula)
-                                                (Cardoso Moreira)
-                                                (Italva)
-                                                (Itaocara)
-                                                (São José de Ubá)
-                                                (Camuci)
-                                                (Miracema)
-                                                (Santo Antônio de Pádua)
-                                                (Aperibé)
-                                                (Laje do Muriaé)
-                                                (Itaperuna)
-                                                (Resende)
-                                                (Itatiaia)
-                                                (Porto Real)
-                                                (Quatis)
-                                                (Barra Mansa)
-                                                (Volta Redonda)
-                                                (Pinheiral)
-                                                (Valença)
-                                                (Rio das Flores)
-                                                (Vassouras)
-                                                (Barra do Piraí)
-                                                (Piraí)
-                                                (Rio Claro)
-                                                (Nova Friburgo)
+                                                ('Rio de Janeiro', 2),
+                                                ('Niterói', 2),
+                                                ('São Gonçalo', 2),
+                                                ('Duque de Caxias', 2),
+                                                ('Nova Iguaçu', 2),
+                                                ('Itaboraí', 2),
+                                                ('São João de Meriti', 2),
+                                                ('Maricá', 2),
+                                                ('Belford Roxo', 2),
+                                                ('Nilópolis', 2),
+                                                ('Mesquita', 2),
+                                                ('Queimados', 2),
+                                                ('Magé', 2),
+                                                ('Teresópolis', 2),
+                                                ('Petrópolis', 2),
+                                                ('Cachoeiras de Macacu', 2),
+                                                ('Guapimirim', 2),
+                                                ('Itacuruçá', 2),
+                                                ('Mangaratiba', 2),
+                                                ('Rio Bonito', 2),
+                                                ('Silva Jardim', 2),
+                                                ('Araruama', 2),
+                                                ('Saquarema', 2),
+                                                ('Arraial do Cabo', 2),
+                                                ('Cabo Frio', 2),
+                                                ('Armação dos Búzios', 2),
+                                                ('Iguaba Grande', 2),
+                                                ('Macaé', 2),
+                                                ('Campos dos Goytacazes', 2),
+                                                ('São Fidélis', 2),
+                                                ('Bom Jesus do Itabapoana', 2),
+                                                ('Natividade', 2),
+                                                ('Porciúncula', 2),
+                                                ('Cardoso Moreira', 2),
+                                                ('Italva', 2),
+                                                ('Itaocara', 2),
+                                                ('São José de Ubá', 2),
+                                                ('Camuci', 2),
+                                                ('Miracema', 2),
+                                                ('Santo Antônio de Pádua', 2),
+                                                ('Aperibé', 2),
+                                                ('Laje do Muriaé', 2),
+                                                ('Itaperuna', 2),
+                                                ('Resende', 2),
+                                                ('Itatiaia', 2),
+                                                ('Porto Real', 2),
+                                                ('Quatis', 2),
+                                                ('Barra Mansa', 2),
+                                                ('Volta Redonda', 2),
+                                                ('Pinheiral', 2),
+                                                ('Valença', 2),
+                                                ('Rio das Flores', 2),
+                                                ('Vassouras', 2),
+                                                ('Barra do Piraí', 2),
+                                                ('Piraí', 2),
+                                                ('Rio Claro', 2),
+                                                ('Nova Friburgo', 2),
                                                 ('Outro', 4);
 
 
