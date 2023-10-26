@@ -8,8 +8,10 @@ alter table adocaodoacao add constraint FK_doador_adocaodoacao foreign key(iddoa
 alter table fotosanimal add constraint FK_animal_fotosanimal foreign key(idanimal) references animal(id);
 alter table animal add constraint FK_animal_cidade foreign key(idcidade) references cidade(id);
 
-insert into estado(nomeestado, sigla) values ('São Paulo', 'SP');
-insert into estado(nomeestado, sigla) values ('Outro', 'OT');
+insert into estado(nomeestado, sigla) values ('São Paulo', 'SP'),
+                                             ('Rio de Janeiro', 'RJ'),
+                                             ('Minas Gerais', 'MG'),
+                                             ('Outro', 'OT');
 
 insert into cidade(nomecidade, idestado) values ('Adamantina', 1),
                                                 ('Águas de Lindóia', 1),
@@ -178,7 +180,64 @@ insert into cidade(nomecidade, idestado) values ('Adamantina', 1),
                                                 ('Votorantim', 1),
                                                 ('Votorantim', 1),
                                                 ('Zacarias', 1),
-                                                ('Outro', 2);
+                                                ('Rio de Janeiro', 2)
+                                                ('Niterói', 2)
+                                                ('São Gonçalo', 2)
+                                                ('Duque de Caxias', 2)
+                                                ('Nova Iguaçu', 2)
+                                                ('Itaboraí', 2)
+                                                ('São João de Meriti', 2)
+                                                ('Maricá', 2)
+                                                ('Belford Roxo', 2)
+                                                (Nilópolis)
+                                                (Mesquita)
+                                                (Queimados)
+                                                (Magé)
+                                                (Teresópolis)
+                                                (Petrópolis)
+                                                (Cachoeiras de Macacu)
+                                                (Guapimirim)
+                                                (Itacuruçá)
+                                                (Mangaratiba)
+                                                (Rio Bonito)
+                                                (Silva Jardim)
+                                                (Araruama)
+                                                (Saquarema)
+                                                (Arraial do Cabo)
+                                                (Cabo Frio)
+                                                (Armação dos Búzios)
+                                                (Iguaba Grande)
+                                                (Macaé)
+                                                (Campos dos Goytacazes)
+                                                (São Fidélis)
+                                                (Bom Jesus do Itabapoana)
+                                                (Natividade)
+                                                (Porciúncula)
+                                                (Cardoso Moreira)
+                                                (Italva)
+                                                (Itaocara)
+                                                (São José de Ubá)
+                                                (Camuci)
+                                                (Miracema)
+                                                (Santo Antônio de Pádua)
+                                                (Aperibé)
+                                                (Laje do Muriaé)
+                                                (Itaperuna)
+                                                (Resende)
+                                                (Itatiaia)
+                                                (Porto Real)
+                                                (Quatis)
+                                                (Barra Mansa)
+                                                (Volta Redonda)
+                                                (Pinheiral)
+                                                (Valença)
+                                                (Rio das Flores)
+                                                (Vassouras)
+                                                (Barra do Piraí)
+                                                (Piraí)
+                                                (Rio Claro)
+                                                (Nova Friburgo)
+                                                ('Outro', 4);
 
 
 insert into adotantedoador(nome, cpf, telefone, email, dtnascimento, endereco, idcidade)

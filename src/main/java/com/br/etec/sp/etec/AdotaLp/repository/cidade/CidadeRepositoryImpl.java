@@ -32,17 +32,14 @@ public class CidadeRepositoryImpl implements  CidadeRepositoryQuery{
 
         criteria.select(builder.construct(CidadeDTO.class,
                 root.get("id"),
-                root.get("nome"),
+                root.get("nomecidade"),
                 root.get("estado").get("nomeestado"),
-                root.get("estado").get("uf"),
-                root.get("estado").get("ibge"),
-                root.get("estado").get("pais"),
-                root.get("estado").get("ddd")
+                root.get("estado").get("sigla")
         ));
 
         Predicate[] predicates = criarRestricoes(cidadefilter, builder, root);
         criteria.where(predicates);
-        criteria.orderBy(builder.asc(root.get("nome")));
+        criteria.orderBy(builder.asc(root.get("nomecidade")));
 
         TypedQuery<CidadeDTO> query = manager.createQuery(criteria);
         adicionarRestricoesDePaginacao(query, pageable);
@@ -68,7 +65,7 @@ public class CidadeRepositoryImpl implements  CidadeRepositoryQuery{
 
         Predicate[] predicates = criarRestricoes(cidadefilter, builder, root);
         criteria.where(predicates);
-        criteria.orderBy(builder.asc(root.get("nome")));
+        criteria.orderBy(builder.asc(root.get("nomecidade")));
 
         criteria.select(builder.count(root));
 
@@ -78,9 +75,17 @@ public class CidadeRepositoryImpl implements  CidadeRepositoryQuery{
     private Predicate[] criarRestricoes(CidadeFilter cidadefilter, CriteriaBuilder builder, Root<Cidade> root) {
         List<Predicate> predicates = new ArrayList<>();
 
-        if (!StringUtils.isEmpty(cidadefilter.getNome())){
-            predicates.add(builder.like(builder.lower(root.get("nome")),
-                    "%" + cidadefilter.getNome().toLowerCase() + "%"));
+        if (!StringUtils.isEmpty(cidadefilter.getNomecidade())){
+            predicates.add(builder.like(builder.lower(root.get("nomecidade")),
+                    "%" + cidadefilter.getNomecidade().toLowerCase() + "%"));
+        }
+        if (!StringUtils.isEmpty(cidadefilter.getNomeestado())){
+            predicates.add(builder.like(builder.lower(root.get("nomeestado")),
+                    "%" + cidadefilter.getNomeestado().toLowerCase() + "%"));
+        }
+        if (!StringUtils.isEmpty(cidadefilter.getSigla())){
+            predicates.add(builder.like(builder.lower(root.get("sigla")),
+                    "%" + cidadefilter.getSigla().toLowerCase() + "%"));
         }
 
 

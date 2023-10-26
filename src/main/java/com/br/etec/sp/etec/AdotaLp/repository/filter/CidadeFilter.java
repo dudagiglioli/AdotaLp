@@ -3,9 +3,9 @@ package com.br.etec.sp.etec.AdotaLp.repository.filter;
 public class CidadeFilter {
 
     private Integer id;
-    private String nome;
-    private Integer uf;
-    private Integer ibge;
+    private String nomecidade;
+    private String nomeestado;
+    private String sigla;
 
     public Integer getId() {
         return id;
@@ -15,27 +15,27 @@ public class CidadeFilter {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getNomecidade() {
+        return nomecidade;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNomecidade(String nomecidade) {
+        this.nomecidade = nomecidade;
     }
 
-    public Integer getUf() {
-        return uf;
+    public String getNomeestado() {
+        return nomeestado;
     }
 
-    public void setUf(Integer uf) {
-        this.uf = uf;
+    public void setNomeestado(String nomeestado) {
+        this.nomeestado = nomeestado;
     }
 
-    public Integer getIbge() {
-        return ibge;
+    public String getSigla() {
+        return sigla;
     }
 
-    public void setIbge(Integer ibge) {
-        this.ibge = ibge;
+    public void setSigla(String sigla) {
+        this.sigla = sigla;
     }
 }
