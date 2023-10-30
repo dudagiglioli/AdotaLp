@@ -7,9 +7,7 @@ import com.br.etec.sp.etec.AdotaLp.repository.projections.AnimalDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,6 +19,18 @@ public class AnimalResource {
     @Autowired
     private AnimalRepository animalrepository;
 
+    @PostMapping("/saveAnimal")
+    public Animal saveAnimal(@RequestBody Animal animal){
+        return animalrepository.saveAnimal(Animal);
+    }
+
+    @PostMapping("/saveAllAnimal")
+    public List<Animal> saveAllAnimal(){
+        return animalrepository.saveAllAnimal(@RequestBody List<Animal> listaranimal()){
+            return animalrepository.fetchAllAnimal(listaranimal());
+        }
+    }
+
     @GetMapping()
     public Page<AnimalDTO> pesquisar(AnimalFilter animalfilter, Pageable pageable){
         return animalrepository.Filtrar(animalfilter, pageable);
@@ -29,5 +39,10 @@ public class AnimalResource {
     @GetMapping("/todos")
     public List<Animal> listaranimal(){
         return animalrepository.findAll();
+    }
+
+    @DeleteMapping("deleteAnimalById/{id}")
+    public  void deleteAnimalById(@PathVariable int id){
+        animalrepository.deleteAnimalById(id);
     }
 }

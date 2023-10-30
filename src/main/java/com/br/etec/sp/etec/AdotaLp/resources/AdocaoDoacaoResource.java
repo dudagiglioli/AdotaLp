@@ -20,6 +20,7 @@ public class AdocaoDoacaoResource {
     @Autowired
     private AdocaoDoacaoRepository adocaodoacaorepository;
 
+
     @GetMapping()
     public Page<AdocaoDoacaoDTO> pesquisar(AdocaoDoacaoFilter adocaodoacaofilter, Pageable pageable){
         return adocaodoacaorepository.filtrar(adocaodoacaofilter, pageable);
