@@ -39,4 +39,14 @@ public class AnimalResource {
     public void deleteAnimalById(@PathVariable int id){
         animalService.deleteAnimalById(id);
     }
+
+    @DeleteMapping("/deleteAllAnimal")
+    public void deleteAnimal(){
+        animalService.deleteAllAnimal();
+    }
+
+    @PutMapping("updateAnimal/{id}")
+    public Animal updateAnimalDetails(@RequestBody Animal animal){
+        return animalService.updateAnimalDetails(animal);
+    }
 }

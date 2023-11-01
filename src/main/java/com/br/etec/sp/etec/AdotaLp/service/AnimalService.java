@@ -31,4 +31,12 @@ public class AnimalService {
     public void deleteAnimalById(int id){
         animalrepositoy.deleteById(id);
     }
+
+    public void deleteAllAnimal(){
+        animalrepositoy.deleteAll();
+    }
+
+    public Animal updateAnimalDetails(Animal animal){
+        return animalrepositoy.save(animal);
+    }
 }
