@@ -1,15 +1,11 @@
 package com.br.etec.sp.etec.AdotaLp.resources;
 
 import com.br.etec.sp.etec.AdotaLp.model.Animal;
-import com.br.etec.sp.etec.AdotaLp.repository.AnimalRepository;
-import com.br.etec.sp.etec.AdotaLp.repository.filter.AnimalFilter;
-import com.br.etec.sp.etec.AdotaLp.repository.projections.AnimalDTO;
+import com.br.etec.sp.etec.AdotaLp.service.AnimalService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
+import java.util.Optional;
 
 
 @RestController
@@ -17,32 +13,30 @@ import java.util.List;
 public class AnimalResource {
 
     @Autowired
-    private AnimalRepository animalrepository;
+    private AnimalService animalService;
 
     @PostMapping("/saveAnimal")
     public Animal saveAnimal(@RequestBody Animal animal){
-        return animalrepository.saveAnimal(Animal);
+        return animalService.saveAnimal(animal);
     }
 
     @PostMapping("/saveAllAnimal")
-    public List<Animal> saveAllAnimal(){
-        return animalrepository.saveAllAnimal(@RequestBody List<Animal> listaranimal()){
-            return animalrepository.fetchAllAnimal(listaranimal());
-        }
+        public List<Animal> saveAllAnimal(@RequestBody List<Animal> animalList){
+        return animalService.saveAllAnimal(animalList);
     }
 
-    @GetMapping()
-    public Page<AnimalDTO> pesquisar(AnimalFilter animalfilter, Pageable pageable){
-        return animalrepository.Filtrar(animalfilter, pageable);
+    @GetMapping("/getAnimal")
+    public List<Animal> getAllAnimal() {
+        return animalService.fetchAllAnimal();
     }
 
-    @GetMapping("/todos")
-    public List<Animal> listaranimal(){
-        return animalrepository.findAll();
+    @GetMapping("/getAnimalById/{id}")
+    public Optional<Animal> getAnimalDtails(@PathVariable int id){
+        return animalService.fetchAnimalById(id);
     }
 
-    @DeleteMapping("deleteAnimalById/{id}")
-    public  void deleteAnimalById(@PathVariable int id){
-        animalrepository.deleteAnimalById(id);
+    @DeleteMapping("/deleteAnimalById/{id}")
+    public void deleteAnimalById(@PathVariable int id){
+        animalService.deleteAnimalById(id);
     }
 }
