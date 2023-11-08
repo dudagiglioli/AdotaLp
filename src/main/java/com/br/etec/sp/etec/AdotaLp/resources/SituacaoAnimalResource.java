@@ -1,17 +1,12 @@
 package com.br.etec.sp.etec.AdotaLp.resources;
 
 import com.br.etec.sp.etec.AdotaLp.model.SituacaoAnimal;
-import com.br.etec.sp.etec.AdotaLp.repository.SituacaoAnimalRepository;
-import com.br.etec.sp.etec.AdotaLp.repository.filter.SituacaoAnimalFilter;
-import com.br.etec.sp.etec.AdotaLp.repository.projections.SituacaoAnimalDTO;
+import com.br.etec.sp.etec.AdotaLp.service.SituacaoAnimalService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @RestController
@@ -19,15 +14,20 @@ import java.util.List;
 public class SituacaoAnimalResource {
 
     @Autowired
-    private SituacaoAnimalRepository situacaoanimalrepository;
+    private SituacaoAnimalService situacaoAnimalService;
 
-    @GetMapping()
-    public Page<SituacaoAnimalDTO> pesquisar(SituacaoAnimalFilter situacaoAnimalFilter, Pageable pageable){
-        return situacaoanimalrepository.Filtrar(situacaoAnimalFilter, pageable);
+    @GetMapping("/getSituacaoAnimal")
+    public List<SituacaoAnimal> getAllAnimal() {
+        return situacaoAnimalService.fetchAllSituacaoAnimal();
     }
 
-    @GetMapping("/todos")
-    public List<SituacaoAnimal> listarsituacaoanimal(){
-        return situacaoanimalrepository.findAll();
+    @GetMapping("/getSituacaoAnimalById/{id}")
+    public Optional<SituacaoAnimal> getSituacaoAnimalDtails(@PathVariable int id){
+        return situacaoAnimalService.fetchSituacaoAnimalById(id);
+    }
+
+    @PutMapping("updateSituacaoAnimal/{id}")
+    public SituacaoAnimal updateSituacaoAnimalDetails(@RequestBody SituacaoAnimal situacaoAnimal){
+        return situacaoAnimalService.updateSituacaoAnimalDetails(situacaoAnimal);
     }
 }

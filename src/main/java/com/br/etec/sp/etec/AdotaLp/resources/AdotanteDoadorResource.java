@@ -1,6 +1,7 @@
 package com.br.etec.sp.etec.AdotaLp.resources;
 
 import com.br.etec.sp.etec.AdotaLp.model.AdotanteDoador;
+import com.br.etec.sp.etec.AdotaLp.model.Animal;
 import com.br.etec.sp.etec.AdotaLp.repository.AdotanteDoadorRepository;
 import com.br.etec.sp.etec.AdotaLp.repository.filter.AdotanteDoadorFilter;
 import com.br.etec.sp.etec.AdotaLp.repository.projections.AdotanteDoadorDTO;
@@ -11,6 +12,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @RestController
@@ -36,8 +38,20 @@ public class AdotanteDoadorResource {
     }
 
 
-    @GetMapping("/todos")
-    public List<AdotanteDoador> listaradotantedoador(){
-        return adotantedoadorrepository.findAll();
+    @GetMapping("/getAdotanteDoadorById/{id}")
+    public Optional<AdotanteDoador> getAdotanteDoadorDtails(@PathVariable int id){
+        return adotanteDoadorService.fetchAdotanteDoadorById(id);
+    }
+
+    @DeleteMapping("/deleteAdotanteDoadorById/{id}")
+    public void deleteAdotanteDoadorById(@PathVariable int id){
+        adotanteDoadorService.deleteAdotanteDoadorById(id);
+    }
+
+    @PutMapping("updateAdotanteDoador/{id}")
+    public AdotanteDoador updateAdotanteDoadorDetails(@RequestBody AdotanteDoador adotanteDoador){
+        return adotanteDoadorService.updateAdotanteDoadorDetails(adotanteDoador);
     }
 }
+
+
