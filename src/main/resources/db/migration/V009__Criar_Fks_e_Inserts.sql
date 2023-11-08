@@ -276,6 +276,8 @@ insert into raca(descricao) values ('Labrador');
 insert into animal(nomeanimal, sexo, idade, porte, idraca, idcidade) values ('Thanos', 'M', 3, 1, 1, 2);
 insert into animal(nomeanimal, sexo, idade, porte, idraca, idcidade) values ('Gael', 'M', 2, 3, 2, 4);
 insert into animal(nomeanimal, sexo, idade, porte, idraca, idcidade) values ('Kiwi', 'M', 5, 2, 1, 3);
+insert into animal(nomeanimal, sexo, idade, porte, idraca, idcidade) values ('KiwiSS', 'M', 5, 2, 1, 3);
+insert into animal(nomeanimal, sexo, idade, porte, idraca, idcidade) values ('KiwiSSa', 'M', 5, 2, 1, 3);
 
 insert into situacaoanimal(situacao, idanimal) values ('Bom Estado', 1);
 insert into situacaoanimal(situacao, idanimal) values ('Vacinas ok, bom estado', 2);
