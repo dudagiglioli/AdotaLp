@@ -4,12 +4,11 @@ import com.br.etec.sp.etec.AdotaLp.model.AdotanteDoador;
 import com.br.etec.sp.etec.AdotaLp.repository.AdotanteDoadorRepository;
 import com.br.etec.sp.etec.AdotaLp.repository.filter.AdotanteDoadorFilter;
 import com.br.etec.sp.etec.AdotaLp.repository.projections.AdotanteDoadorDTO;
+import com.br.etec.sp.etec.AdotaLp.service.AdotanteDoadorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,11 +18,21 @@ import java.util.List;
 public class AdotanteDoadorResource {
 
     @Autowired
-    private AdotanteDoadorRepository adotantedoadorrepository;
+    private AdotanteDoadorService adotanteDoadorService;
 
-    @GetMapping()
-    public Page<AdotanteDoadorDTO> pesquisar(AdotanteDoadorFilter adotantedoadorfilter, Pageable pageable){
-        return adotantedoadorrepository.Filtrar(adotantedoadorfilter, pageable);
+    @PostMapping("/saveAdotanteDoador")
+    public AdotanteDoador saveAdotanteDoador(@RequestBody AdotanteDoador adotanteDoador){
+        return adotanteDoadorService.saveAdotanteDoador(adotanteDoador);
+    }
+
+    @PostMapping("/saveAllAdotanteDoador")
+    public List<AdotanteDoador> saveAllAdotanteDoador(@RequestBody List<AdotanteDoador> adotanteDoadorList){
+        return adotanteDoadorService.saveAllAdotanteDoador(adotanteDoadorList);
+    }
+
+    @GetMapping("/getAdotanteDoador")
+    public List<AdotanteDoador> getAllAdotanteDoador(){
+        return adotanteDoadorService.fetchAllAdotanteDoador();
     }
 
 
