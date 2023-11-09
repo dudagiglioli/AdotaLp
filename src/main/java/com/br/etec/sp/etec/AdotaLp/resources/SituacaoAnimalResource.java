@@ -10,7 +10,7 @@ import java.util.Optional;
 
 
 @RestController
-@RequestMapping("/situacaoanimal")
+@RequestMapping("/api/situacaoanimal")
 public class SituacaoAnimalResource {
 
     @Autowired

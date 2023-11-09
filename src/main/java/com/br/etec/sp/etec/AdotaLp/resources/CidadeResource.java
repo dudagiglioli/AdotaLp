@@ -15,7 +15,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/cidade")
+@RequestMapping("/api/cidade")
 public class CidadeResource {
 
     @Autowired

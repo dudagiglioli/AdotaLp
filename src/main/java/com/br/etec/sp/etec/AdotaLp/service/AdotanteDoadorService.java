@@ -34,10 +34,6 @@ public class AdotanteDoadorService {
         adotanteDoadorRepository.deleteById(id);
     }
 
-    public void deleteAllAdotanteDoador(){
-        adotanteDoadorRepository.deleteAll();
-    }
-
     public AdotanteDoador updateAdotanteDoadorDetails(AdotanteDoador adotanteDoador){
         return adotanteDoadorRepository.save(adotanteDoador);
     }

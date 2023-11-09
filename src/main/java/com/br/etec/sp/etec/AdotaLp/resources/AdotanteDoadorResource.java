@@ -16,7 +16,7 @@ import java.util.Optional;
 
 
 @RestController
-@RequestMapping("/adotantedoador")
+@RequestMapping("/api/adotantedoador")
 public class AdotanteDoadorResource {
 
     @Autowired

@@ -14,7 +14,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/raca")
+@RequestMapping("/api/raca")
 public class RacaResource {
 
     @Autowired

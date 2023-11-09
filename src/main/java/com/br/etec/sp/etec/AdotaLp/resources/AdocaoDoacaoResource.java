@@ -1,35 +1,49 @@
 package com.br.etec.sp.etec.AdotaLp.resources;
 
 import com.br.etec.sp.etec.AdotaLp.model.AdocaoDoacao;
-import com.br.etec.sp.etec.AdotaLp.repository.AdocaoDoacaoRepository;
-import com.br.etec.sp.etec.AdotaLp.repository.filter.AdocaoDoacaoFilter;
-import com.br.etec.sp.etec.AdotaLp.repository.projections.AdocaoDoacaoDTO;
+import com.br.etec.sp.etec.AdotaLp.service.AdocaoDoacaoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
-@RequestMapping("/adocaodoacao")
+@RequestMapping("/api/adocaodoacao")
 public class AdocaoDoacaoResource {
 
     @Autowired
-    private AdocaoDoacaoRepository adocaodoacaorepository;
+    private AdocaoDoacaoService adocaoDoacaoService;
 
 
-    @GetMapping()
-    public Page<AdocaoDoacaoDTO> pesquisar(AdocaoDoacaoFilter adocaodoacaofilter, Pageable pageable){
-        return adocaodoacaorepository.filtrar(adocaodoacaofilter, pageable);
+    @PostMapping("/saveAdocaoDoacao")
+    public AdocaoDoacao saveAdocaoDoacao(@RequestBody AdocaoDoacao adocaoDoacao){
+        return adocaoDoacaoService.saveAdocaoDoacao(adocaoDoacao);
     }
 
-    @GetMapping("/todos")
-    public List<AdocaoDoacao> listaradocaodoacao(){
-
-        return adocaodoacaorepository.findAll();
+    @PostMapping("/saveAllAdocaoDoacao")
+    public List<AdocaoDoacao> saveAllAdocaoDoacao(@RequestBody List<AdocaoDoacao> adocaoDoacaoList){
+        return adocaoDoacaoService.saveAllAdocaoDoacao(adocaoDoacaoList);
     }
-    
+
+    @GetMapping("/getAdocaoDoacao")
+    public List<AdocaoDoacao> getAllAdocaoDoacao(){
+        return adocaoDoacaoService.fetchAllAdocaoDoacao();
+    }
+
+
+    @GetMapping("/fetchAllAdocaoDoacaoById/{id}")
+    public Optional<AdocaoDoacao> getAdocaoDoacaoDtails(@PathVariable int id){
+        return adocaoDoacaoService.fetchAllAdocaoDoacaoById(id);
+    }
+
+    @DeleteMapping("/deleteAdocaoDoacaoById/{id}")
+    public void deleteAdocaoDoacaoById(@PathVariable int id){
+        adocaoDoacaoService.deleteAdocaoDoacaoById(id);
+    }
+
+    @PutMapping("updateAdocaoDoacao/{id}")
+    public AdocaoDoacao updateAdocaoDoacaoDetails(@RequestBody AdocaoDoacao adocaoDoacao){
+        return adocaoDoacaoService.updateAdocaoDoacaoDetails(adocaoDoacao);
+    }
 }

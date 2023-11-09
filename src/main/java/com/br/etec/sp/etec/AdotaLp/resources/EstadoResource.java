@@ -14,7 +14,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/estado")
+@RequestMapping("/api/estado")
 public class EstadoResource {
 
     @Autowired
